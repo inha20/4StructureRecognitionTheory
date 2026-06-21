@@ -4,6 +4,20 @@ All notable changes to this repository are documented here.
 
 ---
 
+## v0.5.0 — 2026-06-21 (Session 31)
+
+### Fixed
+
+**레퍼런스 불일치 수정** — `README.md`, `HANDOVER.md`, `index.html`이 공통적으로 `theory/StructureRecognitionTheory_v0.1–v0.3.md`, `CaseStudyConnections.md`, `ResearchMap.md`, `research-notes/`, `future-papers/`, `research-history/`, `drafts/`가 이 저장소에 존재하는 것처럼 기술하고 있었으나, 실제로는 존재하지 않았음. 연구자 확인 결과, 해당 문서들은 `inha20` 저장소의 `theory/` 폴더에 세 개의 요약 문서(`SRT_Summary.md`, `Hypotheses_Summary.md`, `CoreQuestions_Summary.md`)로 압축·통합되어 있었음(통합 시점 미상).
+
+- `README.md` — Repository Structure, Core Theory Documents, Key Research Areas, Future Papers 섬 전면 수정하여 실제 존재하는 파일과 `inha20/theory/` 요약 문서를 구분해 명시
+- `HANDOVER.md` — v2.0→v2.1; "Repository Structure", "Current Theory State" 섬을 검증된 실제 상태로 교체; AI 읽기 순서를 현재 `inha20-main/management/SESSION_START.md` 단일 진입점으로 갱신(구버전 `MasterHandoverDocument.md` 경로는 Session 30에서 이미 폐기됨)
+- `index.html` — 깨진 "SRT v0.3" GitHub 링크 및 "Current Theory State" 표 수정
+
+**원인:** `inha20`로의 이론 문서 통합 작업(2026-06-06경 추정) 이후, 이 저장소 자체의 문서들이 새 위치를 반영하도록 갱신되지 않은 채 남아있었음("통합 마무리 작업 미완료", 연구자 표현).
+
+---
+
 ## v0.4.0 — 2026-06-06
 
 ### Added

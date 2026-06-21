@@ -95,78 +95,55 @@ Repositories 1–3 provide empirical material; this repository proposes explanat
 
 ```
 .
-├── theory/                    Core theory documents
-│   ├── StructureRecognitionTheory_v0.3.md  ← Current version
-│   ├── StructureRecognitionTheory_v0.2.md
-│   ├── StructureRecognitionTheory_v0.1.md  ← Initial draft
-│   ├── CoreQuestions.md
-│   ├── Hypotheses.md
-│   ├── OpenProblems.md
-│   ├── CaseStudyConnections.md
-│   ├── HypothesisToCase.md
-│   ├── CaseStudies.md
-│   ├── ConceptEvolution.md
-│   └── ResearchMap.md
-│
-├── research-notes/            Working hypotheses and conceptual models
-│   ├── cognition/             Attention, meaning, research worthiness
-│   ├── structure/             Difference, structure discovery
-│   ├── representation/        Representation transformation
-│   ├── concept/               Concept as lens, concept genealogy
-│   ├── ai/                    Human-AI collaboration, AI intuition
-│   └── meta/                  Program architecture, concept maps
-│
-├── future-papers/             Paper outlines and long-term roadmaps
-├── research-history/          Origins and development of the program
-└── drafts/                    Candidate future evolutions (vNext documents)
+├── README.md
+├── HANDOVER.md
+├── CHANGELOG.md
+├── index.html
+└── theory/                    Core theory documents (full versions, kept in this repository)
+    ├── Hypotheses.md          H1–H10, full text
+    ├── CoreQuestions.md       v2.0 — Q1–Q15, Level 0–8
+    └── OpenProblems.md        v1.1 — OP-01–OP-09
 ```
+
+> **통합 안내 (2026-06-21 확인, Session 31):** SRT 본문(v0.1–v0.3), `CaseStudyConnections.md`, `ResearchMap.md`, `research-notes/`, `future-papers/`, `research-history/`, `drafts/`는 압축·정리되어 [`inha20`](https://github.com/inha20/inha20) 저장소의 `theory/` 폴더에 세 개의 요약 문서로 통합되었습니다. 이 저장소에는 통합 이전부터 있던 `Hypotheses.md`, `CoreQuestions.md`, `OpenProblems.md`(전체 버전)만 그대로 남아 있습니다. 아래 "Core Theory Documents" 섹션을 참고하세요.
 
 ---
 
 ## Key Research Areas
 
-### Structure Discovery
-- [Structure Discovery Hypothesis](research-notes/structure/structure-discovery-hypothesis.md)
-- [Structure Discoverer Hypothesis](research-notes/structure/structure-discoverer-hypothesis.md)
-- [Difference Hypothesis](research-notes/structure/difference-hypothesis.md)
-- [Representation Transformation Hypothesis](research-notes/representation/representation-transformation-hypothesis.md)
+H1–H10에 대한 개별 해설 문서(과거 `research-notes/` 하위의 개념별 파일들)는 [`theory/Hypotheses.md`](theory/Hypotheses.md) 한 문서로 통합되어 있습니다. 카테고리별로 다음 가설들을 다룹니다:
 
-### Research Generation
-- [Attention Selection Hypothesis](research-notes/cognition/attention-selection-hypothesis.md)
-- [Meaning Attribution Hypothesis](research-notes/cognition/meaning-attribution-hypothesis.md)
-- [Research Worthiness Hypothesis](research-notes/cognition/research-worthiness-hypothesis.md)
-- [Research Generation Model](research-notes/cognition/research-generation-model.md)
+- **Structure Discovery:** H1 (Structure Discoverer), H2 (Representation Transformation)
+- **Research Generation:** H3 (Attention Filter), H4 (Significance Filter), H5 (Explanation Anticipation), H6 (Explanatory Significance), H7 (Mature Structure Discoverer)
+- **Concept Evolution:** H8 (Concept-as-Lens), H9 (Concept Evolution), H10 (Generative Concept)
+- **Human-AI Collaboration:** Research Generation Framework 절 및 `5HumanAIResearchCollaboration` 저장소 참고
 
-### Concept Evolution
-- [Concept as Lens Hypothesis](research-notes/concept/concept-as-lens-hypothesis.md)
-- [Concept Genealogy](research-notes/concept/concept-genealogy.md)
-
-### Human-AI Collaboration
-- [Human-AI Collaboration Model](research-notes/ai/human-ai-collaboration-model.md)
-- [AI Analogue of Intuition](research-notes/ai/ai-analogue-of-intuition.md)
-
----
-
-## Core Theory Documents
-
-- [Structure Recognition Theory v0.3](theory/StructureRecognitionTheory_v0.3.md) — **Current version** (formal definitions + H8–H10 + empirical research design)
-- [Structure Recognition Theory v0.2](theory/StructureRecognitionTheory_v0.2.md) — Previous version
-- [Structure Recognition Theory v0.1](theory/StructureRecognitionTheory_v0.1.md) — Initial draft
-- [Hypotheses](theory/Hypotheses.md) — H1–H10 organized hypotheses (H8–H10: second-order integrated expansion)
-- [Core Questions](theory/CoreQuestions.md) — Research question hierarchy (v2.0, Q1–Q15, Level 0–8)
-- [Open Problems](theory/OpenProblems.md) — OP-01–OP-09
-- [Case Study Connections](theory/CaseStudyConnections.md) — Connections between empirical cases and hypotheses
-- [Research Map](theory/ResearchMap.md) — Program overview
-- [Case Studies](theory/CaseStudies.md) — Empirical observations
-- [Concept Evolution](theory/ConceptEvolution.md) — Concept-as-lens framework
-- [CHANGELOG](CHANGELOG.md) — Version history
+개념 계보(Concept Genealogy)는 [`inha20/program/ConceptGenealogy.md`](https://github.com/inha20/inha20/blob/main/program/ConceptGenealogy.md)에서 관리됩니다.
 
 ---
 
 ## Future Papers
 
-- [Structure Recognition Theory: Paper Outline](future-papers/structure-recognition-theory-outline.md) — 15-chapter expanded framework
-- [Structure Recognition Theory: Roadmap](future-papers/structure-recognition-theory-roadmap.md) — Long-term development stages
+향후 논문 아웃라인 및 로드맵은 별도 `future-papers/` 폴더 대신, `inha20`의 관리 문서(`management/WorkOrderQueue.md`, `management/ProjectStatus.md`)와 연구 프로그램 전체 Future Projects Tracker에서 추적됩니다.
+
+---
+
+## Core Theory Documents
+
+**이 저장소에 전체 버전으로 남아 있는 문서:**
+
+- [Hypotheses](theory/Hypotheses.md) — H1–H10 organized hypotheses (H8–H10: second-order integrated expansion)
+- [Core Questions](theory/CoreQuestions.md) — Research question hierarchy (v2.0, Q1–Q15, Level 0–8)
+- [Open Problems](theory/OpenProblems.md) — OP-01–OP-09
+- [CHANGELOG](CHANGELOG.md) — Version history
+
+**압축·통합되어 `inha20` 저장소로 이동한 문서** (SRT 본문 v0.1–v0.3, CaseStudyConnections 등):
+
+- [SRT Summary](https://github.com/inha20/inha20/blob/main/theory/SRT_Summary.md) — 공식 정의 3.1–3.3, H4 연산화, Architecture B, 실증 연구 설계 포함
+- [Hypotheses Summary](https://github.com/inha20/inha20/blob/main/theory/Hypotheses_Summary.md)
+- [Core Questions Summary](https://github.com/inha20/inha20/blob/main/theory/CoreQuestions_Summary.md)
+
+> Paper 1–3과 SRT의 연결(구 `CaseStudyConnections.md`)은 [`HANDOVER.md`](HANDOVER.md)의 "How Papers 1–3 Connect to SRT" 표에 보존되어 있습니다.
 
 ---
 
@@ -216,5 +193,5 @@ This repository is part of the **Structure Recognition Research Program**.
 
 ## Author
 
-Choi Jonghun  
+Choi Jonghun
 Inha University

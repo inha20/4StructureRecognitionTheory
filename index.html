@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structure Recognition Theory | Inha Structure Recognition Research</title>
+  <meta name="description" content="Structure Recognition Theory (SRT) — a theoretical framework investigating how humans detect explanatory significance, discover structures, assign meaning, and generate research questions. Includes H1–H10 hypotheses, formal definitions, and empirical research designs. Inha University.">
+  <meta name="keywords" content="structure recognition theory, SRT, explanatory significance, significance filter, human cognition, research generation, Boolean function, Karnaugh map, concept evolution, human-AI collaboration, structure discovery, Inha University">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --surface: #ffffff;
+      --border: #e0ddd8;
+      --text: #1a1a1a;
+      --text-sub: #555;
+      --accent: #2a4d8f;
+      --accent-light: #eef2fa;
+      --code-bg: #f4f2ee;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+    .page-wrap { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    /* Top Nav */
+    .top-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+      padding: .6rem 1.5rem;
+      display: flex; align-items: center; gap: 1.2rem;
+      font-family: 'Segoe UI', sans-serif; font-size: .82rem;
+    }
+    .top-nav a { color: var(--accent); text-decoration: none; }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { color: var(--border); }
+
+    /* Hero */
+    .hero { padding: 3.5rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+    .hero .program-label {
+      font-family: 'Segoe UI', sans-serif; font-size: .8rem;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--accent); margin-bottom: .6rem;
+    }
+    .hero h1 { font-size: 2rem; font-weight: normal; margin-bottom: .5rem; }
+    .hero .subtitle { color: var(--text-sub); font-size: 1.05rem; margin-bottom: 1.2rem; }
+    .hero .core-question {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: .8rem 1.2rem;
+      font-style: italic;
+      font-size: 1.05rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Sections */
+    h2 { font-size: 1.2rem; font-weight: bold; margin: 2.2rem 0 .8rem;
+         border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+    h3 { font-size: 1rem; font-weight: bold; margin: 1.4rem 0 .5rem; color: var(--accent); }
+    p { margin-bottom: .9rem; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif;
+            font-size: .88rem; margin-bottom: 1.5rem; }
+    th { background: var(--accent-light); color: var(--accent);
+         text-align: left; padding: .5rem .8rem; font-weight: 600; }
+    td { padding: .45rem .8rem; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+
+    /* Tags */
+    .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
+    .tag {
+      background: var(--code-bg); border: 1px solid var(--border);
+      border-radius: 3px; padding: .15rem .5rem;
+      font-family: monospace; font-size: .8rem; color: var(--text-sub);
+    }
+
+    /* Links section */
+    .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; margin-bottom: 1.5rem; }
+    .link-card {
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: .8rem 1rem; text-decoration: none; color: var(--text);
+      background: var(--surface); transition: border-color .15s;
+    }
+    .link-card:hover { border-color: var(--accent); }
+    .link-card .lc-role { font-size: .75rem; color: var(--text-sub); margin-bottom: .2rem; font-family: 'Segoe UI', sans-serif; }
+    .link-card .lc-name { font-size: .92rem; font-weight: bold; }
+
+    footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--border);
+             font-family: 'Segoe UI', sans-serif; font-size: .78rem; color: var(--text-sub); }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="https://inha20.github.io/Research-Portfolio/">Research Program</a>
+  <span class="sep">|</span>
+  <a href="https://github.com/inha20/4StructureRecognitionTheory">GitHub</a>
+  <span class="sep">|</span>
+  <a href="https://github.com/inha20/inha20/blob/main/theory/SRT_Summary.md">SRT v0.3 (Summary)</a>
+</nav>
+
+<div class="page-wrap">
+
+  <header class="hero">
+    <div class="program-label">Structure Recognition Research Program · Paper 4 · Theoretical Hub</div>
+    <h1>Structure Recognition Theory</h1>
+    <p class="subtitle">How do humans detect explanatory significance?</p>
+    <div class="core-question">
+      The central question of the program: <strong>How do humans come to see something new?</strong>
+    </div>
+  </header>
+
+  <section>
+    <h2>Abstract</h2>
+    <p>
+      Structure Recognition Theory (SRT) is a theoretical framework investigating the cognitive mechanisms by which humans discover structures, assign meaning to them, and generate research questions. The theory proposes that research does not begin from structure detection alone, but from detecting <em>explanatory significance</em> — a sense that a structure warrants investigation.
+    </p>
+    <p>
+      Built on three empirical case studies (Papers 1–3 on Karnaugh map patterns, symmetric Boolean functions, and variable rearrangement invariance), SRT currently comprises ten exploratory hypotheses (H1–H10), formal definitions of Structure, Attention, and Explanatory Significance, and a hierarchy of fifteen research questions (Q1–Q15 across eight levels).
+    </p>
+  </section>
+
+  <section>
+    <h2>Keywords</h2>
+    <div class="tag-row">
+      <span class="tag">structure recognition</span>
+      <span class="tag">explanatory significance</span>
+      <span class="tag">significance filter</span>
+      <span class="tag">human cognition</span>
+      <span class="tag">concept evolution</span>
+      <span class="tag">research generation</span>
+      <span class="tag">Boolean function</span>
+      <span class="tag">Karnaugh map</span>
+      <span class="tag">human-AI collaboration</span>
+      <span class="tag">structure discovery</span>
+      <span class="tag">concept as lens</span>
+      <span class="tag">H1–H10</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Hypotheses — H1–H10</h2>
+    <p>All hypotheses are <em>exploratory</em>. None are established conclusions.</p>
+    <table>
+      <tr><th>#</th><th>Name</th><th>Core Claim</th></tr>
+      <tr><td>H1</td><td>Structure Discoverer</td><td>Humans have comparative advantage in structure discovery over AI</td></tr>
+      <tr><td>H2</td><td>Representation Transformation</td><td>Representation change enables structure discovery</td></tr>
+      <tr><td>H3</td><td>Attention Filter</td><td>Not all patterns receive investigative attention</td></tr>
+      <tr><td>H4</td><td>Significance Filter</td><td>Implicit filter: "is this worth investigating?"</td></tr>
+      <tr><td>H5</td><td>Explanation Anticipation</td><td>Humans feel a pattern "should have an explanation" before finding it</td></tr>
+      <tr><td>H6</td><td>Explanatory Significance</td><td>Research begins from detection of explanatory potential, not structure per se</td></tr>
+      <tr><td>H7</td><td>Mature Structure Discoverer</td><td>Human core role = detecting explanation opportunity</td></tr>
+      <tr><td><strong>H8</strong></td><td><strong>Concept-as-Lens</strong></td><td>Concepts function as observation lenses — changing what is visible</td></tr>
+      <tr><td><strong>H9</strong></td><td><strong>Concept Evolution</strong></td><td>Research generates concepts; concepts generate further research</td></tr>
+      <tr><td><strong>H10</strong></td><td><strong>Generative Concept</strong></td><td>Concepts differ in their generativity — some open more research than others</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Current Theory State</h2>
+    <p style="font-size:.85rem;color:var(--text-sub);margin-bottom:.8rem;">Full theory text (definitions, H4 operationalization, empirical designs) is maintained as a compressed summary in the <code>inha20</code> repository's <code>theory/</code> folder.</p>
+    <table>
+      <tr><th>Document</th><th>Version</th><th>Contents</th><th>Location</th></tr>
+      <tr><td>SRT_Summary.md</td><td>v0.3 (compressed)</td><td>Formal Definitions 3.1–3.3, H4 operationalization, Empirical Design §10</td><td><code>inha20/theory/</code></td></tr>
+      <tr><td>Hypotheses.md</td><td>H1–H10</td><td>All hypotheses with formal definition cross-references</td><td>this repository</td></tr>
+      <tr><td>CoreQuestions.md</td><td>v2.0</td><td>Q1–Q15 across Level 0–8</td><td>this repository</td></tr>
+      <tr><td>OpenProblems.md</td><td>v1.1</td><td>OP-01–OP-09</td><td>this repository</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Related Repositories</h2>
+    <div class="link-grid">
+      <a class="link-card" href="https://github.com/inha20/1KMapStructureInvariance">
+        <div class="lc-role">Empirical Case Study 1</div>
+        <div class="lc-name">1KMapStructureInvariance</div>
+      </a>
+      <a class="link-card" href="https://github.com/inha20/2SymmetricBooleanFunctionMinorThesis">
+        <div class="lc-role">Empirical Case Study 2</div>
+        <div class="lc-name">2SymmetricBooleanFunctionMinorThesis</div>
+      </a>
+      <a class="link-card" href="https://github.com/inha20/3VariableRearrangementInvarianceMinorThesis">
+        <div class="lc-role">Empirical Case Study 3</div>
+        <div class="lc-name">3VariableRearrangementInvarianceMinorThesis</div>
+      </a>
+      <a class="link-card" href="https://github.com/inha20/5HumanAIResearchCollaboration">
+        <div class="lc-role">Paper 5 — Methodological Study</div>
+        <div class="lc-name">5HumanAIResearchCollaboration</div>
+      </a>
+      <a class="link-card" href="https://github.com/inha20/6BooleanFunctionSpaceTheory">
+        <div class="lc-role">Applied Mathematics Extension (Branch 8)</div>
+        <div class="lc-name">6BooleanFunctionSpaceTheory</div>
+      </a>
+      <a class="link-card" href="https://github.com/inha20/Research-Portfolio">
+        <div class="lc-role">Program Hub</div>
+        <div class="lc-name">Research-Portfolio</div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Structure Recognition Research Program · Choi Jonghun, Inha University</p>
+    <p>Repository: <a href="https://github.com/inha20/4StructureRecognitionTheory">github.com/inha20/4StructureRecognitionTheory</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
