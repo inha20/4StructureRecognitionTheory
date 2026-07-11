@@ -1,7 +1,7 @@
 # Handover Guide — Structure Recognition Theory
 
 **Repository:** 4StructureRecognitionTheory
-**Version:** 2.1
+**Version:** 2.2
 **Date:** 2026-06-21
 **Role:** Theoretical Hub of the Structure Recognition Research Program
 **Updated by:** Session 31 (broken-reference correction after `inha20` theory-document consolidation)
@@ -164,12 +164,11 @@ Formally documented in: `theory/OpenProblems.md` (this repository) v1.1
 
 **Before working in this repository, read in this order:**
 
-1. `inha20-main/management/SESSION_START.md` ← single authoritative AI entry point for the whole research program
-2. `inha20-main/management/WorkOrderQueue.md` ← current task queue
-3. `inha20-main/management/ProjectStatus.md` ← overall progress dashboard
-4. `inha20-main/theory/SRT_Summary.md` ← current compressed theory version (authoritative for the full SRT picture)
-5. `theory/Hypotheses.md` (this repository) ← H1–H10 full text
-6. `theory/CoreQuestions.md` (this repository) v2.0 ← full question hierarchy
+1. `inha20-main/SESSION_START.md` ← single authoritative AI entry point for the whole research program
+2. `inha20-main/ProjectDashboard.md` ← current task queue and repository health dashboard
+3. `inha20-main/StructureRecognitionTheory_Unified.md` ← current compressed theory version (authoritative for the full SRT picture)
+4. `theory/Hypotheses.md` (this repository) ← H1–H10 full text
+5. `theory/CoreQuestions.md` (this repository) v2.0 ← full question hierarchy
 
 Do not begin making changes until you understand the distinction between:
 - **Empirical observations** (from Papers 1–3, fixed)
@@ -202,11 +201,12 @@ Do not begin making changes until you understand the distinction between:
 
 | Version | Date | Change |
 |---|---|---|
+| 2.2 | 2026-06-21 | **Session 33 경로 현행화** — AI 읽기 순서에서 미존재로 확인된 `management/SESSION_START.md`, `management/WorkOrderQueue.md`, `management/ProjectStatus.md`, `theory/SRT_Summary.md` 4개 경로 제거. 현행 루트 위치 파일인 `SESSION_START.md`, `ProjectDashboard.md`, `StructureRecognitionTheory_Unified.md`로 교체. |
 | 2.1 | 2026-06-21 | **Session 31 broken-reference correction** — discovered that `theory/StructureRecognitionTheory_v0.1–v0.3.md`, `CaseStudyConnections.md`, `ResearchMap.md`, `research-notes/`, `future-papers/`, `research-history/`, `drafts/` referenced throughout this document do not exist locally; researcher confirmed these were consolidated into `inha20/theory/*_Summary.md`. All references corrected to point to the actual current locations; "Repository Structure" section corrected to match verified reality; AI reading order updated to current `management/SESSION_START.md` entry point (supersedes old `MasterHandoverDocument.md` / `AIHandoverInstructions.md` paths, which were themselves retired in Session 30's management-folder consolidation). |
 | 2.0 | 2026-06-20 | **Session 26 전면 업데이트** — v1.0 (2026-06-05) 이후 20+ 세션 분량의 표류 수정: H8–H10 추가; SRT v0.3 반영; CoreQuestions v2.0 (Q1–Q15, Level 0–8) 반영; OpenProblems OP-01–OP-09 반영; 구 파일 구조 제거 및 실제 현재 구조로 교체; 참조 경로 현행화 (MasterHandoverDocument 위치, ANTIGRAVITY README); 두 수준의 핵심 질문 명시 |
 | 1.0 | 2026-06-05 | Initial creation |
 
 ---
 
-*Last Updated: 2026-06-21 (v2.1 — Session 31: broken-reference correction after inha20 consolidation)*
-*Cross-reference: inha20-main/management/SESSION_START.md, inha20-main/theory/SRT_Summary.md*
+*Last Updated: 2026-06-21 (v2.2 — Session 33: AI reading order paths corrected to current root-level files)*
+*Cross-reference: inha20-main/SESSION_START.md, inha20-main/StructureRecognitionTheory_Unified.md*
