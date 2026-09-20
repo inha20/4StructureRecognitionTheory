@@ -1,216 +1,650 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Structure Recognition Theory | Structure Recognition Research Program</title>
-  <meta name="description" content="Independent research by Jonghun Choi, a graduate of Inha Technical College. Structure Recognition Theory (SRT) investigates how humans detect explanatory significance, discover structures, assign meaning, and generate research questions. Includes H1–H10 hypotheses, formal definitions, and empirical research designs.">
-  <meta name="keywords" content="structure recognition theory, SRT, explanatory significance, significance filter, human cognition, research generation, Boolean function, Karnaugh map, concept evolution, human-AI collaboration, structure discovery, Inha Technical College">
+  <title>Structure Recognition Theory | Paper 4 · Theoretical Hub</title>
+  <meta name="description" content="Independent research by Jonghun Choi, a graduate of Inha Technical College. Structure Recognition Theory (SRT) investigates how humans detect explanatory significance, discover structures, assign meaning, and generate research questions. Includes H1–H10 hypotheses and formal definitions." />
+  <meta name="keywords" content="structure recognition theory, SRT, explanatory significance, significance filter, human cognition, research generation, Boolean function, Karnaugh map, concept evolution, human-AI collaboration, structure discovery, Inha Technical College, Jonghun Choi" />
+
+  <!-- Google Fonts: Newsreader, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #fafaf8;
-      --surface: #ffffff;
-      --border: #e0ddd8;
-      --text: #1a1a1a;
-      --text-sub: #555;
-      --accent: #2a4d8f;
-      --accent-light: #eef2fa;
-      --code-bg: #f4f2ee;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Georgia', serif;
-      font-size: 1rem;
-      line-height: 1.85;
-    }
-    .page-wrap { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
 
-    /* Top Nav */
-    .top-nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.93);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--border);
-      padding: .6rem 1.5rem;
-      display: flex; align-items: center; gap: 1.2rem;
-      font-family: 'Segoe UI', sans-serif; font-size: .82rem;
+      /* Light Theme */
+      --bg: #fbfbf9;
+      --bg-alt: #f4f3ef;
+      --surface: #ffffff;
+      --border: #e6e3dc;
+      --border-focus: #254b8c;
+      --text: #1a1b26;
+      --text-muted: #575a6e;
+      --text-faint: #898c9f;
+
+      --accent: #254b8c;
+      --accent-hover: #1b3868;
+      --accent-glow: rgba(37, 75, 140, 0.08);
+      --accent-surface: #eef3fc;
+
+      --teal: #0d9488;
+      --teal-bg: #f0fdfa;
+      --amber: #d97706;
+      --amber-bg: #fffbeb;
+      --violet: #7c3aed;
+      --violet-bg: #f5f3ff;
+      --emerald: #059669;
+      --emerald-bg: #ecfdf5;
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.08);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      --container-max: 920px;
     }
-    .top-nav a { color: var(--accent); text-decoration: none; }
-    .top-nav a:hover { text-decoration: underline; }
-    .top-nav .sep { color: var(--border); }
+
+    [data-theme="dark"] {
+      --bg: #0d0f17;
+      --bg-alt: #131622;
+      --surface: #181b2a;
+      --border: #262a3e;
+      --border-focus: #60a5fa;
+      --text: #f1f3fa;
+      --text-muted: #9ba1b9;
+      --text-faint: #636882;
+
+      --accent: #60a5fa;
+      --accent-hover: #93c5fd;
+      --accent-glow: rgba(96, 165, 250, 0.12);
+      --accent-surface: #162238;
+
+      --teal: #2dd4bf;
+      --teal-bg: #11292b;
+      --amber: #fbbf24;
+      --amber-bg: #292011;
+      --violet: #a78bfa;
+      --violet-bg: #261b3e;
+      --emerald: #34d399;
+      --emerald-bg: #112d22;
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.75;
+      letter-spacing: -0.01em;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(var(--border) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header & Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(251, 251, 249, 0.85);
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.3s ease;
+    }
+    [data-theme="dark"] .site-header {
+      background: rgba(13, 15, 23, 0.85);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--text); }
+
+    .theme-toggle-btn {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .theme-toggle-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .theme-toggle-btn svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
 
     /* Hero */
-    .hero { padding: 3.5rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
-    .hero .program-label {
-      font-family: 'Segoe UI', sans-serif; font-size: .8rem;
-      text-transform: uppercase; letter-spacing: .1em;
-      color: var(--accent); margin-bottom: .6rem;
+    .hero {
+      padding: 4rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
     }
-    .hero h1 { font-size: 2rem; font-weight: normal; margin-bottom: .5rem; }
-    .hero .subtitle { color: var(--text-sub); font-size: 1.05rem; margin-bottom: 1.2rem; }
-    .hero .core-question {
-      background: var(--accent-light);
-      border-left: 3px solid var(--accent);
-      padding: .8rem 1.2rem;
+    .paper-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      background: var(--violet-bg);
+      color: var(--violet);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 1.6rem;
+    }
+
+    .core-question-box {
+      background: linear-gradient(135deg, var(--surface), var(--accent-surface));
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 1.3rem 1.6rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .core-question-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .core-question-text {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
       font-style: italic;
-      font-size: 1.05rem;
-      border-radius: 0 4px 4px 0;
+      color: var(--text);
     }
 
     /* Sections */
-    h2 { font-size: 1.2rem; font-weight: bold; margin: 2.2rem 0 .8rem;
-         border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
-    h3 { font-size: 1rem; font-weight: bold; margin: 1.4rem 0 .5rem; color: var(--accent); }
-    p { margin-bottom: .9rem; }
-
-    /* Table */
-    table { width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif;
-            font-size: .88rem; margin-bottom: 1.5rem; }
-    th { background: var(--accent-light); color: var(--accent);
-         text-align: left; padding: .5rem .8rem; font-weight: 600; }
-    td { padding: .45rem .8rem; border-bottom: 1px solid var(--border); }
-    tr:last-child td { border-bottom: none; }
-
-    /* Tags */
-    .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
-    .tag {
-      background: var(--code-bg); border: 1px solid var(--border);
-      border-radius: 3px; padding: .15rem .5rem;
-      font-family: monospace; font-size: .8rem; color: var(--text-sub);
+    .section-wrap {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .prose {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .prose p {
+      margin-bottom: 1rem;
     }
 
-    /* Links section */
-    .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; margin-bottom: 1.5rem; }
+    /* Modern Table */
+    .table-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    th {
+      background: var(--bg-alt);
+      color: var(--text);
+      font-weight: 600;
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td {
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background: var(--accent-glow);
+    }
+    .hypo-id {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Tags Cloud */
+    .keyword-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+    .keyword-pill {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 0.3rem 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Related Links Grid */
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
     .link-card {
-      border: 1px solid var(--border); border-radius: 6px;
-      padding: .8rem 1rem; text-decoration: none; color: var(--text);
-      background: var(--surface); transition: border-color .15s;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .link-card:hover { border-color: var(--accent); }
-    .link-card .lc-role { font-size: .75rem; color: var(--text-sub); margin-bottom: .2rem; font-family: 'Segoe UI', sans-serif; }
-    .link-card .lc-name { font-size: .92rem; font-weight: bold; }
+    .link-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .link-role {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .link-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
 
-    footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--border);
-             font-family: 'Segoe UI', sans-serif; font-size: .78rem; color: var(--text-sub); }
+    /* Footer */
+    .site-footer {
+      margin-top: auto;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
-<nav class="top-nav">
-  <a href="https://inha20.github.io/Research-Portfolio/">Research Program</a>
-  <span class="sep">|</span>
-  <a href="https://github.com/inha20/4StructureRecognitionTheory">GitHub</a>
-  <span class="sep">|</span>
-  <a href="https://github.com/inha20/inha20/blob/main/theory/SRT_Summary.md">SRT v0.3 (Summary)</a>
-</nav>
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-mark">SR</div>
+        <div>
+          <span>Structure Recognition Theory</span>
+          <span style="color: var(--text-faint); font-size: 0.8rem; margin-left: 4px;">Paper 4</span>
+        </div>
+      </div>
 
-<div class="page-wrap">
-
-  <header class="hero">
-    <div class="program-label">Structure Recognition Research Program · Paper 4 · Theoretical Hub</div>
-    <h1>Structure Recognition Theory</h1>
-    <p class="subtitle">How do humans detect explanatory significance?</p>
-    <div class="core-question">
-      The central question of the program: <strong>How do humans come to see something new?</strong>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <nav class="nav-links">
+          <a href="https://inha20.github.io/Research-Portfolio/">Research Program</a>
+          <a href="https://github.com/inha20/4StructureRecognitionTheory" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/inha20/inha20">inha20 Profile</a>
+        </nav>
+        <button id="themeToggle" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle theme">
+          <svg id="themeIcon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <section>
-    <h2>Abstract</h2>
-    <p>
-      Structure Recognition Theory (SRT) is a theoretical framework investigating the cognitive mechanisms by which humans discover structures, assign meaning to them, and generate research questions. The theory proposes that research does not begin from structure detection alone, but from detecting <em>explanatory significance</em> — a sense that a structure warrants investigation.
-    </p>
-    <p>
-      Built on three empirical case studies (Papers 1–3 on Karnaugh map patterns, symmetric Boolean functions, and variable rearrangement invariance), SRT currently comprises ten exploratory hypotheses (H1–H10), formal definitions of Structure, Attention, and Explanatory Significance, and a hierarchy of fifteen research questions (Q1–Q15 across eight levels).
-    </p>
-  </section>
+  <main class="container">
 
-  <section>
-    <h2>Keywords</h2>
-    <div class="tag-row">
-      <span class="tag">structure recognition</span>
-      <span class="tag">explanatory significance</span>
-      <span class="tag">significance filter</span>
-      <span class="tag">human cognition</span>
-      <span class="tag">concept evolution</span>
-      <span class="tag">research generation</span>
-      <span class="tag">Boolean function</span>
-      <span class="tag">Karnaugh map</span>
-      <span class="tag">human-AI collaboration</span>
-      <span class="tag">structure discovery</span>
-      <span class="tag">concept as lens</span>
-      <span class="tag">H1–H10</span>
+    <!-- Hero -->
+    <section class="hero">
+      <span class="paper-tag">Paper 4 · Theoretical Hub</span>
+      <h1 class="hero-title">Structure Recognition Theory (SRT)</h1>
+      <p class="hero-sub">A formal cognitive framework for how humans detect explanatory significance and generate research questions.</p>
+
+      <div class="core-question-box">
+        <div class="core-question-label">Core Inquiry</div>
+        <div class="core-question-text">
+          “How do humans come to see something new?”
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract -->
+    <section class="section-wrap">
+      <h2 class="section-title">Abstract</h2>
+      <div class="prose">
+        <p>
+          Structure Recognition Theory (SRT) investigates the cognitive mechanisms by which humans discover structures, assign meaning to them, and generate research questions. The theory proposes that research does not begin from structure detection alone, but from detecting <strong>explanatory significance</strong> — an intuitive and cognitive sense that an observed pattern warrants deeper systematic investigation.
+        </p>
+        <p>
+          Built on three empirical case studies (Papers 1–3 on Karnaugh map patterns, symmetric Boolean functions, and variable rearrangement invariance), SRT synthesizes ten exploratory hypotheses (H1–H10), formal definitions of <em>Structure</em>, <em>Attention</em>, and <em>Explanatory Significance</em>, and a hierarchy of fifteen research questions (Q1–Q15 across eight conceptual levels).
+        </p>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: var(--text-faint);">Keywords</span>
+        <div class="keyword-cloud">
+          <span class="keyword-pill">structure recognition</span>
+          <span class="keyword-pill">explanatory significance</span>
+          <span class="keyword-pill">significance filter</span>
+          <span class="keyword-pill">human cognition</span>
+          <span class="keyword-pill">concept evolution</span>
+          <span class="keyword-pill">research generation</span>
+          <span class="keyword-pill">Boolean function</span>
+          <span class="keyword-pill">Karnaugh map</span>
+          <span class="keyword-pill">human-AI collaboration</span>
+          <span class="keyword-pill">concept as lens</span>
+          <span class="keyword-pill">H1–H10</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hypotheses H1-H10 -->
+    <section class="section-wrap">
+      <h2 class="section-title">Theoretical Hypotheses (H1–H10)</h2>
+      <p class="prose" style="color: var(--text-muted); font-size: 0.95rem;">
+        All hypotheses in SRT are exploratory models designed to generate empirical testing protocols.
+      </p>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 60px;">#</th>
+              <th style="width: 220px;">Hypothesis Name</th>
+              <th>Core Proposition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="hypo-id">H1</td>
+              <td><strong>Structure Discoverer</strong></td>
+              <td>Humans have a distinctive comparative advantage in initial structure discovery over AI systems.</td>
+            </tr>
+            <tr>
+              <td class="hypo-id">H2</td>
+              <td><strong>Representation Transformation</strong></td>
+              <td>Changing visual/geometric representations is what enables latent structure discovery.</td>
+            </tr>
+            <tr>
+              <td class="hypo-id">H3</td>
+              <td><strong>Attention Filter</strong></td>
+              <td>Not all perceptual patterns trigger exploratory investigative attention.</td>
+            </tr>
+            <tr>
+              <td class="hypo-id">H4</td>
+              <td><strong>Significance Filter</strong></td>
+              <td>Cognition applies an implicit heuristic filter: "is this structure worth investigating?"</td>
+            </tr>
+            <tr>
+              <td class="hypo-id">H5</td>
+              <td><strong>Explanation Anticipation</strong></td>
+              <td>Humans perceive that a pattern "ought to have an explanation" prior to formulating the proof.</td>
+            </tr>
+            <tr>
+              <td class="hypo-id">H6</td>
+              <td><strong>Explanatory Significance</strong></td>
+              <td>Research generation initiates from detecting explanatory potential, not raw structure alone.</td>
+            </tr>
+            <tr>
+              <td class="hypo-id">H7</td>
+              <td><strong>Mature Structure Discoverer</strong></td>
+              <td>The fundamental human research role is detecting explanation opportunities for systematic expansion.</td>
+            </tr>
+            <tr style="background: var(--accent-surface);">
+              <td class="hypo-id">H8</td>
+              <td><strong>Concept-as-Lens</strong></td>
+              <td>Concepts act as observation lenses — radically altering what structures become visible.</td>
+            </tr>
+            <tr style="background: var(--accent-surface);">
+              <td class="hypo-id">H9</td>
+              <td><strong>Concept Evolution</strong></td>
+              <td>Research produces concepts; refined concepts in turn generate higher-order research inquiries.</td>
+            </tr>
+            <tr style="background: var(--accent-surface);">
+              <td class="hypo-id">H10</td>
+              <td><strong>Generative Concept</strong></td>
+              <td>Concepts differ in their generative capacity — fertile concepts open extensive research programs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Current Theory Documents -->
+    <section class="section-wrap">
+      <h2 class="section-title">Current Theory Documentation</h2>
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Version</th>
+              <th>Key Contents</th>
+              <th>Repository</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SRT_Summary.md</strong></td>
+              <td>v0.3</td>
+              <td>Formal Definitions 3.1–3.3, H4 Operationalization, Empirical Protocol §10</td>
+              <td><code>inha20/theory/</code></td>
+            </tr>
+            <tr>
+              <td><strong>Hypotheses.md</strong></td>
+              <td>H1–H10</td>
+              <td>Complete hypotheses with mathematical cross-references</td>
+              <td>This Repo</td>
+            </tr>
+            <tr>
+              <td><strong>CoreQuestions.md</strong></td>
+              <td>v2.0</td>
+              <td>Hierarchical question taxonomy Q1–Q15 (Levels 0–8)</td>
+              <td>This Repo</td>
+            </tr>
+            <tr>
+              <td><strong>OpenProblems.md</strong></td>
+              <td>v1.1</td>
+              <td>Nine active open research challenges (OP-01–OP-09)</td>
+              <td>This Repo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Related Peer Repositories -->
+    <section class="section-wrap" style="border-bottom: none;">
+      <h2 class="section-title">Peer Repositories</h2>
+      <div class="link-grid">
+        <a class="link-card" href="https://github.com/inha20/1KMapStructureInvariance" target="_blank" rel="noopener">
+          <div class="link-role">Empirical Case Study 1</div>
+          <div class="link-title">1KMapStructureInvariance ↗</div>
+        </a>
+        <a class="link-card" href="https://github.com/inha20/2SymmetricBooleanFunctionMinorThesis" target="_blank" rel="noopener">
+          <div class="link-role">Empirical Case Study 2</div>
+          <div class="link-title">2SymmetricBooleanFunctionMinorThesis ↗</div>
+        </a>
+        <a class="link-card" href="https://github.com/inha20/3VariableRearrangementInvarianceMinorThesis" target="_blank" rel="noopener">
+          <div class="link-role">Empirical Case Study 3</div>
+          <div class="link-title">3VariableRearrangementInvarianceMinorThesis ↗</div>
+        </a>
+        <a class="link-card" href="https://github.com/inha20/5HumanAIResearchCollaboration" target="_blank" rel="noopener">
+          <div class="link-role">Methodological Study (Paper 5)</div>
+          <div class="link-title">5HumanAIResearchCollaboration ↗</div>
+        </a>
+        <a class="link-card" href="https://github.com/inha20/6BooleanFunctionSpaceTheory" target="_blank" rel="noopener">
+          <div class="link-role">Mathematical Extension (Branch 8)</div>
+          <div class="link-title">6BooleanFunctionSpaceTheory ↗</div>
+        </a>
+        <a class="link-card" href="https://github.com/inha20/Research-Portfolio" target="_blank" rel="noopener">
+          <div class="link-role">Program Coordinating Hub</div>
+          <div class="link-title">Research-Portfolio ↗</div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      Structure Recognition Research Program · Jonghun Choi · Independent Researcher · Graduate of Inha Technical College
     </div>
-  </section>
-
-  <section>
-    <h2>Hypotheses — H1–H10</h2>
-    <p>All hypotheses are <em>exploratory</em>. None are established conclusions.</p>
-    <table>
-      <tr><th>#</th><th>Name</th><th>Core Claim</th></tr>
-      <tr><td>H1</td><td>Structure Discoverer</td><td>Humans have comparative advantage in structure discovery over AI</td></tr>
-      <tr><td>H2</td><td>Representation Transformation</td><td>Representation change enables structure discovery</td></tr>
-      <tr><td>H3</td><td>Attention Filter</td><td>Not all patterns receive investigative attention</td></tr>
-      <tr><td>H4</td><td>Significance Filter</td><td>Implicit filter: "is this worth investigating?"</td></tr>
-      <tr><td>H5</td><td>Explanation Anticipation</td><td>Humans feel a pattern "should have an explanation" before finding it</td></tr>
-      <tr><td>H6</td><td>Explanatory Significance</td><td>Research begins from detection of explanatory potential, not structure per se</td></tr>
-      <tr><td>H7</td><td>Mature Structure Discoverer</td><td>Human core role = detecting explanation opportunity</td></tr>
-      <tr><td><strong>H8</strong></td><td><strong>Concept-as-Lens</strong></td><td>Concepts function as observation lenses — changing what is visible</td></tr>
-      <tr><td><strong>H9</strong></td><td><strong>Concept Evolution</strong></td><td>Research generates concepts; concepts generate further research</td></tr>
-      <tr><td><strong>H10</strong></td><td><strong>Generative Concept</strong></td><td>Concepts differ in their generativity — some open more research than others</td></tr>
-    </table>
-  </section>
-
-  <section>
-    <h2>Current Theory State</h2>
-    <p style="font-size:.85rem;color:var(--text-sub);margin-bottom:.8rem;">Full theory text (definitions, H4 operationalization, empirical designs) is maintained as a compressed summary in the <code>inha20</code> repository's <code>theory/</code> folder.</p>
-    <table>
-      <tr><th>Document</th><th>Version</th><th>Contents</th><th>Location</th></tr>
-      <tr><td>SRT_Summary.md</td><td>v0.3 (compressed)</td><td>Formal Definitions 3.1–3.3, H4 operationalization, Empirical Design §10</td><td><code>inha20/theory/</code></td></tr>
-      <tr><td>Hypotheses.md</td><td>H1–H10</td><td>All hypotheses with formal definition cross-references</td><td>this repository</td></tr>
-      <tr><td>CoreQuestions.md</td><td>v2.0</td><td>Q1–Q15 across Level 0–8</td><td>this repository</td></tr>
-      <tr><td>OpenProblems.md</td><td>v1.1</td><td>OP-01–OP-09</td><td>this repository</td></tr>
-    </table>
-  </section>
-
-  <section>
-    <h2>Related Repositories</h2>
-    <div class="link-grid">
-      <a class="link-card" href="https://github.com/inha20/1KMapStructureInvariance">
-        <div class="lc-role">Empirical Case Study 1</div>
-        <div class="lc-name">1KMapStructureInvariance</div>
-      </a>
-      <a class="link-card" href="https://github.com/inha20/2SymmetricBooleanFunctionMinorThesis">
-        <div class="lc-role">Empirical Case Study 2</div>
-        <div class="lc-name">2SymmetricBooleanFunctionMinorThesis</div>
-      </a>
-      <a class="link-card" href="https://github.com/inha20/3VariableRearrangementInvarianceMinorThesis">
-        <div class="lc-role">Empirical Case Study 3</div>
-        <div class="lc-name">3VariableRearrangementInvarianceMinorThesis</div>
-      </a>
-      <a class="link-card" href="https://github.com/inha20/5HumanAIResearchCollaboration">
-        <div class="lc-role">Paper 5 — Methodological Study</div>
-        <div class="lc-name">5HumanAIResearchCollaboration</div>
-      </a>
-      <a class="link-card" href="https://github.com/inha20/6BooleanFunctionSpaceTheory">
-        <div class="lc-role">Applied Mathematics Extension (Branch 8)</div>
-        <div class="lc-name">6BooleanFunctionSpaceTheory</div>
-      </a>
-      <a class="link-card" href="https://github.com/inha20/Research-Portfolio">
-        <div class="lc-role">Program Hub</div>
-        <div class="lc-name">Research-Portfolio</div>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    <p>Structure Recognition Research Program · Choi Jonghun · Independent researcher · Graduate of Inha Technical College</p>
-    <p>Repository: <a href="https://github.com/inha20/4StructureRecognitionTheory">github.com/inha20/4StructureRecognitionTheory</a></p>
   </footer>
 
-</div>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlEl = document.documentElement;
+
+    const moonPath = "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z";
+    const sunPath = "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z";
+
+    function setTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('sr_theme', theme);
+      if (theme === 'dark') {
+        themeIcon.innerHTML = `<path d="${sunPath}"></path>`;
+      } else {
+        themeIcon.innerHTML = `<path d="${moonPath}"></path>`;
+      }
+    }
+
+    const savedTheme = localStorage.getItem('sr_theme') || 
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
