@@ -105,26 +105,26 @@ Repositories 1–3 provide empirical material; this repository proposes explanat
     └── OpenProblems.md        v1.1 — OP-01–OP-09
 ```
 
-> **통합 안내 (2026-06-21 확인, Session 31):** SRT 본문(v0.1–v0.3), `CaseStudyConnections.md`, `ResearchMap.md`, `research-notes/`, `future-papers/`, `research-history/`, `drafts/`는 압축·정리되어 [`inha20`](https://github.com/inha20/inha20) 저장소의 `theory/` 폴더에 세 개의 요약 문서로 통합되었습니다. 이 저장소에는 통합 이전부터 있던 `Hypotheses.md`, `CoreQuestions.md`, `OpenProblems.md`(전체 버전)만 그대로 남아 있습니다. 아래 "Core Theory Documents" 섹션을 참고하세요.
+> **통합 안내 (2026-06-21 확인, Session 31; 이후 점검으로 정정):** SRT 본문(v0.1–v0.3), `CaseStudyConnections.md`, `ResearchMap.md`, `research-notes/`, `future-papers/`, `research-history/`, `drafts/`는 2026-06-20~21에 이 저장소에서 삭제되었습니다. [`inha20`](https://github.com/inha20/inha20) 저장소에는 `theory/` 폴더나 `*_Summary.md` 파일이 올라간 적이 없으며, 내용은 일부만 다음 위치로 이어져 있습니다: SRT 본문의 압축본은 [`inha20/StructureRecognitionTheory_Unified.md`](https://github.com/inha20/inha20/blob/main/StructureRecognitionTheory_Unified.md)(공식 정의 3.1–3.3, H1–H10 요약, H4 연산화, 실증 연구 설계), `CaseStudyConnections.md`는 [`HANDOVER.md`](HANDOVER.md)의 "How Papers 1–3 Connect to SRT" 표(압축본), `ResearchMap.md`의 질문 위계와 `drafts/`의 Level 6–8은 [`theory/CoreQuestions.md`](theory/CoreQuestions.md), `research-notes/`의 가설 진술과 `drafts/`의 H8–H10은 [`theory/Hypotheses.md`](theory/Hypotheses.md)에 요약·반영되어 있습니다. 그 밖의 내용(`future-papers/`, `research-history/` 등)과 모든 원문 전체는 이 저장소의 git 이력에서만 확인할 수 있습니다(삭제 직전 커밋 목록은 [`HANDOVER.md`](HANDOVER.md) 상단 "업데이트 안내" 참고). 이 저장소에는 통합 이전부터 있던 `Hypotheses.md`, `CoreQuestions.md`, `OpenProblems.md`(전체 버전)만 그대로 남아 있습니다. 아래 "Core Theory Documents" 섹션을 참고하세요.
 
 ---
 
 ## Key Research Areas
 
-H1–H10에 대한 개별 해설 문서(과거 `research-notes/` 하위의 개념별 파일들)는 [`theory/Hypotheses.md`](theory/Hypotheses.md) 한 문서로 통합되어 있습니다. 카테고리별로 다음 가설들을 다룹니다:
+H1–H10에 대한 개별 해설 문서(과거 `research-notes/` 하위의 개념별 파일들)는 [`theory/Hypotheses.md`](theory/Hypotheses.md) 한 문서로 요약되어 있습니다(개별 해설 원문은 삭제되어 git 이력 `ee7f2a5^`에서만 확인할 수 있습니다). 카테고리별로 다음 가설들을 다룹니다:
 
 - **Structure Discovery:** H1 (Structure Discoverer), H2 (Representation Transformation)
 - **Research Generation:** H3 (Attention Filter), H4 (Significance Filter), H5 (Explanation Anticipation), H6 (Explanatory Significance), H7 (Mature Structure Discoverer)
 - **Concept Evolution:** H8 (Concept-as-Lens), H9 (Concept Evolution), H10 (Generative Concept)
 - **Human-AI Collaboration:** Research Generation Framework 절 및 `5HumanAIResearchCollaboration` 저장소 참고
 
-개념 계보(Concept Genealogy)는 [`inha20/program/ConceptGenealogy.md`](https://github.com/inha20/inha20/blob/main/program/ConceptGenealogy.md)에서 관리됩니다.
+개념 계보(Concept Genealogy)의 압축본은 [`inha20/SESSION_START.md`](https://github.com/inha20/inha20/blob/main/SESSION_START.md)의 "Concept Genealogy" 절에서 관리됩니다(7단계 전체 서술본은 삭제되어 `Research-Portfolio` 저장소의 git 이력 `15f97ad^:ConceptGenealogy.md`에서만 확인할 수 있습니다).
 
 ---
 
 ## Future Papers
 
-향후 논문 아웃라인 및 로드맵은 별도 `future-papers/` 폴더 대신, `inha20`의 관리 문서(`management/WorkOrderQueue.md`, `management/ProjectStatus.md`)와 연구 프로그램 전체 Future Projects Tracker에서 추적됩니다.
+이 저장소의 `future-papers/` 폴더(SRT 논문 아웃라인·로드맵)는 2026-06-20에 삭제되었고 원문은 git 이력 `8cd8d72^`에서만 확인할 수 있습니다. 현재 남아 있는 후속 연구 개요는 [`inha20/HumanAICollaborationProposal_Outline.md`](https://github.com/inha20/inha20/blob/main/HumanAICollaborationProposal_Outline.md)(Paper 4 × Paper 5 교차 연구 제안서 초안)이며, 프로그램 전체의 작업 현황(Active Queue)과 저장소 상태 표(Repository Health)는 [`inha20/SESSION_START.md`](https://github.com/inha20/inha20/blob/main/SESSION_START.md)에서 확인할 수 있습니다.
 
 ---
 
@@ -137,11 +137,9 @@ H1–H10에 대한 개별 해설 문서(과거 `research-notes/` 하위의 개�
 - [Open Problems](theory/OpenProblems.md) — OP-01–OP-09
 - [CHANGELOG](CHANGELOG.md) — Version history
 
-**압축·통합되어 `inha20` 저장소로 이동한 문서** (SRT 본문 v0.1–v0.3, CaseStudyConnections 등):
+**압축되어 `inha20` 저장소에 요약본으로 남아 있는 문서** (SRT 본문 v0.1–v0.3의 압축본; 전문은 이 저장소의 git 이력 `b47a27e^`, `fb99794^`, `677bf7e^`):
 
-- [SRT Summary](https://github.com/inha20/inha20/blob/main/theory/SRT_Summary.md) — 공식 정의 3.1–3.3, H4 연산화, Architecture B, 실증 연구 설계 포함
-- [Hypotheses Summary](https://github.com/inha20/inha20/blob/main/theory/Hypotheses_Summary.md)
-- [Core Questions Summary](https://github.com/inha20/inha20/blob/main/theory/CoreQuestions_Summary.md)
+- [SRT Unified Summary](https://github.com/inha20/inha20/blob/main/StructureRecognitionTheory_Unified.md) — 공식 정의 3.1–3.3, H1–H10 요약, H4 연산화, 실증 연구 설계(§10), Level 0–8 질문 위계, OP-01–OP-09 요약 포함 (구 SRT·Hypotheses·Core Questions 요약본 세 개를 합친 단일 문서이며 Q1–Q15 번호 체계는 없으므로 Q1–Q15와 전문은 이 저장소의 `theory/` 문서 참고)
 
 > Paper 1–3과 SRT의 연결(구 `CaseStudyConnections.md`)은 [`HANDOVER.md`](HANDOVER.md)의 "How Papers 1–3 Connect to SRT" 표에 보존되어 있습니다.
 
@@ -187,7 +185,7 @@ This repository is part of the **Structure Recognition Research Program**.
 | [3VariableRearrangementInvarianceMinorThesis](https://github.com/inha20/3VariableRearrangementInvarianceMinorThesis) | Empirical Case Study 3 |
 | [4StructureRecognitionTheory](https://github.com/inha20/4StructureRecognitionTheory) | Theoretical Hub ← You are here |
 
-**Master Handover Document:** [MasterHandoverDocument.md](https://github.com/inha20/Research-Portfolio/blob/main/ProjectManagement/MasterHandoverDocument.md)
+**AI 단일 진입점:** [SESSION_START.md](https://github.com/inha20/inha20/blob/main/SESSION_START.md)
 
 ---
 

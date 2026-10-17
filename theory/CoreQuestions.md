@@ -181,7 +181,7 @@ Level 6 asks about the concept as a lens. Level 7 asks about the change in perce
 
 *Connected hypotheses: H8 (concept as lens), H9 (concept evolution)*  
 *Connected open problems: OP-07 (concept-as-lens)*  
-*Evidence from this program: The concept of "structural invariance" (available after Paper 3) made the question "what properties survive transformation?" formulable — a question that was not available before the concept existed.*
+*Evidence from this program: The concept of "structural invariance" made the question "what properties survive transformation?" formulable — a question that was not available before the concept existed.*
 
 ---
 
@@ -316,6 +316,6 @@ To flag a question as having a candidate resolution, add:
 ---
 
 *Version history: v1.0 = initial structure (Level 0–5, Q1–Q10); v2.0 = expanded (Level 0–8, Q1–Q15, cross-level table, full hypothesis/OP connections, program history table)*  
-*Cross-reference: Hypotheses.md, OpenProblems.md, StructureRecognitionTheory_v0.3.md, CaseStudyConnections.md, ConceptEvolution.md*  
+*Cross-reference: Hypotheses.md, OpenProblems.md, HANDOVER.md ("How Papers 1–3 Connect to SRT"), inha20/StructureRecognitionTheory_Unified.md (compressed SRT v0.3; full v0.3 text only in git 677bf7e^)*  
 *vNext candidate integrated: drafts/CoreQuestions_vNext.md (Levels 6–8 adopted)*  
 *Last Updated: 2026-06-06*

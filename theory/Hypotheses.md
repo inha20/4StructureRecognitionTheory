@@ -238,7 +238,7 @@ New Research
 
 **Formal connection:** H9 describes how Definition 3.1, Condition 1 (holistic recognition) is a variable over time — it expands as the researcher's conceptual repertoire grows through H8. Each completed research cycle potentially adds a concept that enables new structures to be recognized, which enables new instances of Definition 3.3 (explanatory significance detection), which enables new research.
 
-**Evidence:** The Concept Genealogy (Research-Portfolio-main/ConceptGenealogy.md, Steps 1–7) documents H9 in operation over this research program's history.
+**Evidence:** The Concept Genealogy (condensed chain in inha20/SESSION_START.md, section "Concept Genealogy"; the full 7-step text was Research-Portfolio/ConceptGenealogy.md, deleted 2026-06-20 and available only from the Research-Portfolio git history, 15f97ad^) documents H9 in operation over this research program's history.
 
 **Status:** Integrated extension hypothesis (elevated from candidate in SRT v0.3). Consistent with program history. Formal test not yet designed.
 

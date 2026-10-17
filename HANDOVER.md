@@ -16,11 +16,11 @@ This guide ensures that any future contributor — human or AI — can continue 
 
 ## ⚠️ 2026-06-21 업데이트 안내 (Session 31)
 
-이전 버전(v2.0, Session 26)은 `theory/StructureRecognitionTheory_v0.1–v0.3.md`, `CaseStudyConnections.md`, `research-notes/`, `future-papers/`, `research-history/`, `drafts/`가 이 저장소에 존재하는 것처럼 기술하고 있었으나, 실제로는 이 파일들이 **`inha20` 저장소의 `theory/` 폴더로 압축·통합**되어 있었고 이 문서가 그 사실을 반영하지 못해 발생한 불일치였습니다(연구자 확인, 2026-06-21).
+이전 버전(v2.0, Session 26)은 `theory/StructureRecognitionTheory_v0.1–v0.3.md`, `CaseStudyConnections.md`, `research-notes/`, `future-papers/`, `research-history/`, `drafts/`가 이 저장소에 존재하는 것처럼 기술하고 있었으나, 실제로는 이 파일들이 이 저장소에서 삭제되어 있었고(2026-06-20~21), 내용 일부만 **`inha20` 저장소의 압축본 `StructureRecognitionTheory_Unified.md`** 등으로 이어져 있었으며, 이 문서가 그 사실을 반영하지 못해 발생한 불일치였습니다(연구자 확인, 2026-06-21). 이후 점검에서 `inha20` GitHub 저장소에는 `theory/` 폴더와 `*_Summary.md` 파일이 올라간 적이 없음이 확인되어 아래 항목을 정정했습니다.
 
 - **이 저장소에 그대로 남아있는 전체 문서:** `theory/Hypotheses.md`, `theory/CoreQuestions.md`, `theory/OpenProblems.md`
-- **`inha20/theory/`로 통합된 요약 문서:** `SRT_Summary.md`, `Hypotheses_Summary.md`, `CoreQuestions_Summary.md` (공식 정의 3.1–3.3, H1–H10, Q1–Q15, OP-01–09 포함 — 압축본이지만 핵심 내용은 보존됨)
-- **완전히 누락된 것으로 보이는 내용:** `CaseStudyConnections.md`의 세부 버전(다만 요약은 본 문서의 "How Papers 1–3 Connect to SRT" 표에 보존), `ResearchMap.md`, `research-notes/`의 개별 가설 해설 파일들, `future-papers/`의 논문 아웃라인/로드맵, `research-history/`의 타임라인. 별도 백업 위치를 찾지 못했습니다 — 필요하다면 `Hypotheses.md`/`CoreQuestions.md`/`OpenProblems.md`와 Summary 문서로부터 재구성 가능합니다.
+- **`inha20`의 통합 요약 문서:** [`inha20/StructureRecognitionTheory_Unified.md`](https://github.com/inha20/inha20/blob/main/StructureRecognitionTheory_Unified.md) — 구 `SRT_Summary.md`, `Hypotheses_Summary.md`, `CoreQuestions_Summary.md` 세 요약본을 하나로 합친 문서 (공식 정의 3.1–3.3, H1–H10 요약, Level 0–8 질문 위계, OP-01–09 요약 포함 — 압축본이며 Q1–Q15 번호 체계는 없으므로 Q1–Q15는 이 저장소의 `theory/CoreQuestions.md` 참고)
+- **이 저장소의 git 이력에서만 복원 가능한 내용:** `CaseStudyConnections.md`의 세부 버전(요약은 본 문서의 "How Papers 1–3 Connect to SRT" 표에 보존; 원문 `7c8ef5f^:theory/CaseStudyConnections.md`), `ResearchMap.md`(`d00a8c6^:theory/ResearchMap.md`; 질문 위계는 `theory/CoreQuestions.md`에 남아 있음), `research-notes/`의 개별 가설 해설 파일들(`ee7f2a5^:research-notes/`), `future-papers/`의 논문 아웃라인/로드맵(`8cd8d72^:future-papers/`), `research-history/`의 타임라인(`fa8fd2b^:research-history/`), `drafts/`(`f3042a5^:drafts/`), SRT 본문 v0.1–v0.3(`b47a27e^`, `fb99794^`, `677bf7e^`의 `theory/StructureRecognitionTheory_v0.1.md`, `_v0.2.md`, `_v0.3.md`). 별도 백업을 찾을 필요 없이 `git show <커밋>^:<경로>`로 읽을 수 있습니다.
 
 이하 본문은 이 사실을 반영해 수정되었습니다.
 
@@ -64,9 +64,9 @@ Do not bypass this evolution. The sequence is itself a research finding (Concept
 
 ## Current Theory State — SRT v0.3
 
-**Full theory document (compressed, current authoritative version):** [`inha20/theory/SRT_Summary.md`](https://github.com/inha20/inha20/blob/main/theory/SRT_Summary.md) — contains Definitions 3.1–3.3, H4 operationalization, Architecture B, and the §10 empirical research designs.
+**Compressed theory document (current authoritative summary):** [`inha20/StructureRecognitionTheory_Unified.md`](https://github.com/inha20/inha20/blob/main/StructureRecognitionTheory_Unified.md) — contains Definitions 3.1–3.3, the H1–H10 summary, H4 operationalization, and the §10 empirical research designs; the "Four-Paper Architecture (Architecture B)" is in [`inha20/SESSION_START.md`](https://github.com/inha20/inha20/blob/main/SESSION_START.md). The full v0.3 text (712 lines) exists only in git history (`677bf7e^:theory/StructureRecognitionTheory_v0.3.md`).
 **Locally in this repository:** `theory/Hypotheses.md` (H1–H10 full text), `theory/CoreQuestions.md` (v2.0, Q1–Q15), `theory/OpenProblems.md` (v1.1, OP-01–09).
-**Historical SRT draft versions (v0.1, v0.2):** not currently located on this local machine; treat as lost pending recovery from GitHub remote history if needed.
+**Historical SRT draft versions (v0.1, v0.2, v0.3):** removed from this repository on 2026-06-21; recoverable from this repository's git history (`b47a27e^:theory/StructureRecognitionTheory_v0.1.md`, `fb99794^:theory/StructureRecognitionTheory_v0.2.md`, `677bf7e^:theory/StructureRecognitionTheory_v0.3.md`).
 
 ### Key additions in v0.3 (Session 11–12, 2026-06-06)
 - **Section 3: Formal Definitions** — Structure, Attention, Explanatory Significance (Definitions 3.1–3.3)
@@ -99,7 +99,7 @@ All are **exploratory**. None are established conclusions.
 
 ## Core Question Hierarchy — v2.0 (Q1–Q15, Level 0–8)
 
-Full hierarchy documented in: `theory/CoreQuestions.md` v2.0 (this repository) / `inha20/theory/CoreQuestions_Summary.md` (compressed)
+Full hierarchy documented in: `theory/CoreQuestions.md` v2.0 (this repository) / `inha20/StructureRecognitionTheory_Unified.md` §1 (compressed Level 0–8 table; no Q1–Q15 numbering)
 
 | Level | Focus | Questions |
 |---|---|---|
@@ -121,14 +121,14 @@ Formally documented in: `theory/OpenProblems.md` (this repository) v1.1
 
 | ID | Problem |
 |---|---|
-| OP-01 | Formalization of the significance filter |
-| OP-02 | Computational model of H4 |
-| OP-03 | Representation transformation taxonomy |
-| OP-04 | Cross-domain generalization of SRT |
+| OP-01 | The Attention Selection Problem |
+| OP-02 | The Significance Boundary Problem |
+| OP-03 | The Explanation Anticipation Mechanism |
+| OP-04 | The Representation Design Problem |
 | OP-05 | Invariance as significance criterion |
 | OP-06 | AI role in structure discovery |
-| OP-07 | Measuring concept generativity (H10) |
-| OP-08 | Concept evolution rate measurement |
+| OP-07 | The Concept-as-Lens Problem (concept generativity, H10) |
+| OP-08 | The Research Question Origin Problem |
 | OP-09 | Definition 3.3 necessity conditions |
 
 ---
@@ -136,7 +136,7 @@ Formally documented in: `theory/OpenProblems.md` (this repository) v1.1
 ## Repository Structure (Actual Current State, verified 2026-06-21)
 
 ```
-4StructureRecognitionTheory-main/
+4StructureRecognitionTheory/
 ├── README.md                           ← Program overview, navigation
 ├── CHANGELOG.md                        ← Version history (current: v0.5.0)
 ├── HANDOVER.md                         ← This file (v2.1)
@@ -146,7 +146,7 @@ Formally documented in: `theory/OpenProblems.md` (this repository) v1.1
     └── OpenProblems.md                 ← v1.1 (OP-01–OP-09)
 ```
 
-> **Note:** SRT body text (v0.1–v0.3), `CaseStudyConnections.md`, `ResearchMap.md`, and the `research-notes/`, `future-papers/`, `research-history/`, `drafts/` directories described in older versions of this document do **not** exist in the current local repository. They were consolidated into `inha20/theory/*_Summary.md`. Do not reference those old paths as if they were local files in this repository.
+> **Note:** SRT body text (v0.1–v0.3), `CaseStudyConnections.md`, `ResearchMap.md`, and the `research-notes/`, `future-papers/`, `research-history/`, `drafts/` directories described in older versions of this document do **not** exist in the current local repository. They were deleted on 2026-06-20/21: the SRT body survives only as the compressed `inha20/StructureRecognitionTheory_Unified.md`, the case-study mapping as the table below, and the question hierarchy / hypotheses inside `theory/CoreQuestions.md` and `theory/Hypotheses.md`; everything else is recoverable only from this repository's git history (commit list in the update notice above). Do not reference those old paths as if they were local files in this repository.
 
 ---
 
@@ -164,11 +164,10 @@ Formally documented in: `theory/OpenProblems.md` (this repository) v1.1
 
 **Before working in this repository, read in this order:**
 
-1. `inha20-main/SESSION_START.md` ← single authoritative AI entry point for the whole research program
-2. `inha20-main/ProjectDashboard.md` ← current task queue and repository health dashboard
-3. `inha20-main/StructureRecognitionTheory_Unified.md` ← current compressed theory version (authoritative for the full SRT picture)
-4. `theory/Hypotheses.md` (this repository) ← H1–H10 full text
-5. `theory/CoreQuestions.md` (this repository) v2.0 ← full question hierarchy
+1. `inha20/SESSION_START.md` ← single authoritative AI entry point for the whole research program, including the current task queue ("Active Queue") and repository health table (the former `ProjectDashboard.md` was merged into it)
+2. `inha20/StructureRecognitionTheory_Unified.md` ← current compressed theory version (authoritative for the full SRT picture)
+3. `theory/Hypotheses.md` (this repository) ← H1–H10 full text
+4. `theory/CoreQuestions.md` (this repository) v2.0 ← full question hierarchy
 
 Do not begin making changes until you understand the distinction between:
 - **Empirical observations** (from Papers 1–3, fixed)
@@ -181,7 +180,7 @@ Do not begin making changes until you understand the distinction between:
 
 ### What to Add
 - Theory expansions connecting H8–H10 to empirical observations
-- Empirical research design refinements (Section 10, currently only in `inha20/theory/SRT_Summary.md`)
+- Empirical research design refinements (Section 10, currently only in the compressed `inha20/StructureRecognitionTheory_Unified.md` §4 and in git history `677bf7e^`)
 - New Open Problems when new unresolved questions arise
 - Case study connections between Papers 1–3 and H8–H10
 
@@ -191,7 +190,7 @@ Do not begin making changes until you understand the distinction between:
 - References to `research-notes/`, `future-papers/`, `research-history/`, or `drafts/` as if they exist locally in this repository — they do not (see note above)
 
 ### Version Control
-- Significant theory additions → update `inha20/theory/SRT_Summary.md` (the current authoritative location) + CHANGELOG entry here
+- Significant theory additions → update `inha20/StructureRecognitionTheory_Unified.md` (the current authoritative compressed location) + CHANGELOG entry here
 - Minor corrections → update CHANGELOG only
 - Always document the session number and date
 
@@ -209,4 +208,4 @@ Do not begin making changes until you understand the distinction between:
 ---
 
 *Last Updated: 2026-06-21 (v2.2 — Session 33: AI reading order paths corrected to current root-level files)*
-*Cross-reference: inha20-main/SESSION_START.md, inha20-main/StructureRecognitionTheory_Unified.md*
+*Cross-reference: inha20/SESSION_START.md, inha20/StructureRecognitionTheory_Unified.md*

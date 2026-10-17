@@ -132,11 +132,11 @@ did not, despite being equally true.
 
 **What we don't know:**
 - Is invariance intrinsically more significant than change? Or is this context-dependent?
-- Does the presence of change (24 arrangements all different) make the invariant
+- Does the presence of change (the 24 arrangements give different pictures for most functions, but one picture for totally symmetric functions) make the invariant
   properties *more* salient (contrast effect)?
 - Is invariance a general criterion for significance, or specific to structural research?
 
-**Status:** Open. Cross-paper pattern (see CaseStudyConnections.md) suggests
+**Status:** Open. Cross-paper pattern (see HANDOVER.md, "How Papers 1–3 Connect to SRT" — condensed; original CaseStudyConnections.md v1.0 deleted 2026-06-21, git 7c8ef5f^) suggests
 invariance as a candidate significance criterion.
 
 ---
@@ -170,7 +170,7 @@ AI contributed connections, frameworks, organization.
 New concepts appear to enable the discovery of structures not previously visible.
 The mechanism by which a concept "opens" new perception is unknown.
 
-**Origin:** ConceptEvolution.md (Concept-as-Lens Hypothesis)
+**Origin:** ConceptEvolution.md (Concept-as-Lens Hypothesis; original deleted 2026-06-21, git 87c8f59^ — continued as H8–H10 in Hypotheses.md)
 
 **What we observe:**
 After the concept of "structural invariance" was available, researchers could ask
@@ -181,7 +181,7 @@ questions that were not formulable before the concept existed.
 - Are all concepts equally generative, or do some function better as lenses?
 - Can concept-as-lens be operationalized for deliberate discovery?
 
-**Status:** Open. See ConceptEvolution.md for further analysis.
+**Status:** Open. See H8–H10 in Hypotheses.md and Levels 6–8 in CoreQuestions.md for further analysis (original ConceptEvolution.md deleted 2026-06-21, git 87c8f59^).
 
 ---
 
@@ -287,5 +287,5 @@ When adding a new problem:
 ---
 
 *Created: 2026-06-06*  
-*Cross-reference: Hypotheses.md, CoreQuestions.md, CaseStudyConnections.md, HANDOVER.md*  
+*Cross-reference: Hypotheses.md, CoreQuestions.md, HANDOVER.md*  
 *Scope: Structure Recognition Research Program — Problems are program-level, not paper-level*
