@@ -90,7 +90,7 @@ Repositories 1–3 provide empirical material; this repository proposes explanat
 | 5. Human-AI Collaboration | Comparative strengths, collaborative discovery |
 | 6. AI Collaboration Education | Human-AI role division, educational frameworks |
 | 7. Structure-Based Elementary Mathematics | Pattern, structure, and meaning in elementary mathematics |
-| 8. Boolean Function Space Theory | Function-space classification, S4 orbit structure |
+| Paper 6. Boolean Function Space Theory | Function-space classification, S4 orbit structure |
 
 ---
 
