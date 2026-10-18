@@ -89,7 +89,8 @@ Repositories 1–3 provide empirical material; this repository proposes explanat
 | 4. Structure Recognition Theory | Structure discovery, meaning attribution, question generation |
 | 5. Human-AI Collaboration | Comparative strengths, collaborative discovery |
 | 6. AI Collaboration Education | Human-AI role division, educational frameworks |
-| 7. Future Directions | Concept evolution, formal theories |
+| 7. Structure-Based Elementary Mathematics | Pattern, structure, and meaning in elementary mathematics |
+| 8. Boolean Function Space Theory | Function-space classification, S4 orbit structure |
 
 ---
 
@@ -118,7 +119,7 @@ H1–H10에 대한 개별 해설 문서(과거 `research-notes/` 하위의 개�
 - **Structure Discovery:** H1 (Structure Discoverer), H2 (Representation Transformation)
 - **Research Generation:** H3 (Attention Filter), H4 (Significance Filter), H5 (Explanation Anticipation), H6 (Explanatory Significance), H7 (Mature Structure Discoverer)
 - **Concept Evolution:** H8 (Concept-as-Lens), H9 (Concept Evolution), H10 (Generative Concept)
-- **Human-AI Collaboration:** Research Generation Framework 절 및 `5HumanAIResearchCollaboration` 저장소 참고
+- **Human-AI Collaboration:** H1·H7(인간–AI 역할 구분 가설) 및 `5HumanAIResearchCollaboration` 저장소 참고
 
 개념 계보(Concept Genealogy)의 압축본은 [`inha20/SESSION_START.md`](https://github.com/inha20/inha20/blob/main/SESSION_START.md)의 "Concept Genealogy" 절에서 관리됩니다(7단계 전체 서술본은 삭제되어 `Research-Portfolio` 저장소의 git 이력 `15f97ad^:ConceptGenealogy.md`에서만 확인할 수 있습니다).
 

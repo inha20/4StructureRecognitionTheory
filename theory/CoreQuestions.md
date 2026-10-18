@@ -123,7 +123,7 @@ Not all significant structures generate research questions. Level 4 asks about t
 
 *Connected hypotheses: H4, H6, H7*  
 *Connected open problems: OP-02 (significance boundary), OP-08 (research question origin)*  
-*Relation to Level 3: A structure can pass the significance filter without generating a specific research question. Question generation requires not just judgment of significance, but the formation of a specific inquiry.*
+*Relation to Level 3: A structure can be judged significant without yet crossing the research threshold, and so without generating a specific research question. Question generation requires not just judgment of significance, but the formation of a specific inquiry.*
 
 ---
 
@@ -204,7 +204,7 @@ Level 7 describes the change in perception due to a concept. Level 8 asks about 
 
 ## Full Question Inventory
 
-Questions are grouped by type and cross-referenced to levels above.
+Questions are grouped by type and cross-referenced to hypotheses and open problems. The "Level 1–3" labels on the three groups below number these inventory groups; they are not the Levels 0–8 of the hierarchy above.
 
 ---
 
@@ -293,8 +293,8 @@ This evolution is itself an example of the Concept Evolution Cycle (H9):
 | Current | How do humans detect explanatory significance? | Concept of *explanatory significance* (H6) |
 | Program-level | How do humans come to see something new? | Concept of *concept as lens* (H8) |
 
-**What this table shows:** Each new central question required a new concept to become formulable.  
-This is not incidental — it is the Concept Evolution Cycle demonstrating itself in the research program's own history.
+**What this table shows:** Each new central question appears to have required a new concept to become formulable.  
+This is consistent with the Concept Evolution Cycle (H9) operating in the research program's own history, but a single retrospective self-report is not a test of it.
 
 ---
 

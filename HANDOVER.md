@@ -103,15 +103,15 @@ Full hierarchy documented in: `theory/CoreQuestions.md` v2.0 (this repository) /
 
 | Level | Focus | Questions |
 |---|---|---|
-| 0 | Observation | Q1–Q2 |
-| 1 | Structure | Q3–Q4 |
-| 2 | Discovery | Q5–Q6 |
-| 3 | Significance | Q7–Q8 |
-| 4 | Question Generation | Q9–Q10 |
-| 5 | Explanation | Q11 |
-| 6 | Concept | Q12–Q13 |
-| 7 | Expanded Perception | Q14 |
-| 8 | New Discovery | Q15 |
+| 0 | Observation | Q0.1–Q0.4 |
+| 1 | Structure | Q1.1–Q1.5 |
+| 2 | Discovery | Q2.1–Q2.5 |
+| 3 | Significance | Q3.1–Q3.6 |
+| 4 | Question Generation | Q4.1–Q4.6 |
+| 5 | Explanation | Q5.1–Q5.6 |
+| 6 | Concept | Q6.1–Q6.5 |
+| 7 | Expanded Perception | Q7.1–Q7.5 |
+| 8 | New Discovery | Q8.1–Q8.5 |
 
 ---
 

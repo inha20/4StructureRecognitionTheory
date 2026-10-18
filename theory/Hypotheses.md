@@ -156,7 +156,7 @@ Perceived Explanatory Potential
 Research Question
 ```
 
-**Formal connection:** H6 is the primary motivation for Definition 3.3 (Explanatory Significance, SRT v0.3). The claim is that the transition to research is governed specifically by a structure satisfying all four conditions of Definition 3.3 — not by structure recognition (Definition 3.1) alone.
+**Formal connection:** H6 is the primary motivation for Definition 3.3 (Explanatory Significance, SRT v0.3). The claim is that the transition to research is governed specifically by a structure satisfying Conditions 1–3 of Definition 3.3 (Condition 4 being the research-threshold crossing itself) — not by structure recognition (Definition 3.1) alone.
 
 **Status:** Exploratory. Empirical research design proposed: SRT v0.3, Section 10.3 (Research Worthiness Judgment Paradigm).
 

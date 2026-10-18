@@ -121,14 +121,14 @@ The design principles for structure-revealing representations are unknown.
 
 **Statement:**
 In Paper 3, invariance under variable rearrangement was deemed research-worthy
-while the changes themselves were not. Why is invariance more significant than change?
+while the changes themselves were treated as secondary. Why is invariance more significant than change?
 
 **Origin:** H4, H6
 
 **What we observe:**
 The observation "some structural properties survive all 24 variable arrangements"
 generated research questions. The observation "patterns change under rearrangement"
-did not, despite being equally true.
+did not, although it holds only for functions that are not totally symmetric (the 4-variable XOR/XNOR checkerboard and the Exactly-k ring/corner/point patterns do not change at all).
 
 **What we don't know:**
 - Is invariance intrinsically more significant than change? Or is this context-dependent?
@@ -155,7 +155,7 @@ was done by the human researcher.
 AI contributed connections, frameworks, organization.
 
 **What we don't know:**
-- Is the human advantage due to biological constraints of AI systems?
+- Is the human advantage due to inherent constraints of AI systems?
 - Or is it an artifact of how AI systems are currently prompted and used?
 - Does AI have an "analogue of intuition" that could support structure discovery?
 - Would a differently designed AI system discover structures differently?
@@ -213,7 +213,7 @@ Research questions in this program emerged from:
 **Statement:**
 Definition 3.3 (Explanatory Significance, SRT v0.3) is formulated with four conditions
 as jointly necessary and sufficient.
-But whether the four conditions are *individually necessary* — or whether a weaker or
+But whether this conjunction of four conditions actually captures explanatory significance — or whether a weaker or
 alternative set could substitute — is an open question with direct implications for the
 theory's empirical testability.
 
