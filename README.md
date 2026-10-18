@@ -1,4 +1,4 @@
-> **보관된 이전 연구 노트.** 이 저장소는 저자의 이전 연구 노트이며, 내용은 [7번 논문](https://github.com/inha20/7GroupTheoryBooleanUnification)(수학)과 [8번 논문](https://github.com/inha20/8StructuralThinkingInAIEra)(이론과 사례)으로 정리·정정되었습니다. 일부 서술과 옛 포털에는 정정 전 내용이 있을 수 있으니 인용은 7·8번을 사용해 주세요.
+> **보관된 이전 연구 노트.** 이 저장소는 저자의 이전 연구 노트이며, 내용은 [7번 논문](https://github.com/inha20/7KarnaughGroupClassification)(수학)과 [8번 논문](https://github.com/inha20/8StructuralThinkingAndHumanAICollaboration)(이론과 사례)으로 정리·정정되었습니다. 일부 서술과 옛 포털에는 정정 전 내용이 있을 수 있으니 인용은 7·8번을 사용해 주세요.
 
 # Structure Recognition Theory
 
