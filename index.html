@@ -440,6 +440,8 @@ a.brand{color:inherit;text-decoration:none}
 /* a menu the visitor closed on purpose (Escape, or a click on its button) stays closed while the pointer is still over it:
    the pages also open their menus on :hover, and a touch screen keeps :hover after a tap */
 html .nav-dropdown.dismissed .nav-dropdown-content,html .global-nav.dismissed .global-nav-dropdown{display:none!important}
+/* on screens that cannot hover, :hover (sticky after a tap) never opens a menu: the open state does */
+@media (hover:none){html .nav-dropdown:not(.open):hover .nav-dropdown-content,html .global-nav:not(.open):hover .global-nav-dropdown{display:none!important}}
 /* the skip link focuses <main>; the container itself needs no ring */
 main[tabindex="-1"]:focus{outline:none}
 /* text for screen readers only (copy confirmation) */
@@ -466,7 +468,7 @@ main[tabindex="-1"]:focus{outline:none}
 
       <!-- Global Research Nav -->
       <div class="global-nav" style="position:relative;">
-        <button class="global-nav-trigger" style="background:var(--bg-alt);border:1px solid var(--border);color:var(--text-muted);padding:0.3rem 0.75rem;border-radius:9999px;font-size:0.8rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.4rem;transition:all 0.2s ease;" aria-haspopup="true">
+        <button class="global-nav-trigger" style="background:var(--bg-alt);border:1px solid var(--border);color:var(--text-muted);padding:0.3rem 0.75rem;border-radius:9999px;font-size:0.8rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.4rem;transition:all 0.2s ease;">
           <span>연구 허브</span>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
         </button>
@@ -773,8 +775,15 @@ main[tabindex="-1"]:focus{outline:none}
   function later(m){requestAnimationFrame(function(){sync(m);});}
   menus.forEach(function(m){
     var b=m.querySelector('button');if(!b)return;
-    b.setAttribute('aria-haspopup','true');sync(m);
-    b.addEventListener('click',function(e){e.stopPropagation();if(m.classList.contains('open'))dismiss(m);else setOpen(m,true);});
+    sync(m);
+    var ptype='';
+    b.addEventListener('pointerdown',function(e){ptype=e.pointerType||'';});
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      // a click toggles what the visitor sees (the menu can already be showing because of :hover); a touch screen keeps :hover after a tap, so a tap goes by the open state
+      var touch=ptype==='touch';ptype='';
+      if(touch?m.classList.contains('open'):shown(m))dismiss(m);else setOpen(m,true);
+    });
     m.addEventListener('mouseenter',function(){later(m);});
     m.addEventListener('mouseleave',function(){m.classList.remove('dismissed');later(m);});
   });
