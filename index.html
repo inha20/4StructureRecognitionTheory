@@ -409,7 +409,7 @@
 <meta name="twitter:title" content="Structure Recognition Theory | Paper 4 · Theoretical Hub">
 <meta name="twitter:description" content="Independent research by Jonghun Choi, a second-year student at Inha Technical College. Structure Recognition Theory (SRT) investigates how humans detect explanatory significance, discover structures, assign meaning, and generate research questions. Includes H1–H10 hypotheses and formal definitions.">
 <meta name="twitter:image" content="https://inha20.github.io/Research-Portfolio/assets/og.png">
-<script>(function(){try{var t=localStorage.getItem('sr_theme');if(t!=='dark'&&t!=='light'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<script>(function(){var t=null;try{t=localStorage.getItem('sr_theme')}catch(e){}if(t!=='dark'&&t!=='light'){try{t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}catch(e){t=null}}if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
 <style id="program-shell">
 /* ── program shell (2026-11): shared by every page of the research program ── */
 html[data-theme="light"]{color-scheme:light}
@@ -445,7 +445,7 @@ main[tabindex="-1"]:focus{outline:none}
 /* text for screen readers only (copy confirmation) */
 .shell-live{position:fixed;left:0;top:0;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 @media (max-width:640px){
-  .global-nav{position:static}
+  .global-nav{position:static!important}
   .global-nav-dropdown{left:12px!important;right:12px;min-width:0!important;max-height:calc(100vh - 80px);overflow-y:auto}
 }
 /*end-shell*/@media (hover:hover){.global-nav:hover .global-nav-dropdown{display:block!important}}.link-card{min-width:0}.link-title{overflow-wrap:anywhere}.table-card{overflow-x:auto;position:relative}html[data-theme="dark"]{--on-accent:#0d0f17}</style>
