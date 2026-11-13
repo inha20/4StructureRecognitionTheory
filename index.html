@@ -435,8 +435,11 @@ a.brand{color:inherit;text-decoration:none}
 .brand>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 /* menus open on tap, click and keyboard focus as well as on hover */
 .nav-dropdown.open .nav-dropdown-content{display:block}
-.global-nav-trigger:focus+.global-nav-dropdown{display:none}
+.global-nav:not(:hover):not(.open) .global-nav-trigger:focus+.global-nav-dropdown{display:none}
 .global-nav.open .global-nav-dropdown{display:block!important}
+/* a menu the visitor closed on purpose (Escape, or a click on its button) stays closed while the pointer is still over it:
+   the pages also open their menus on :hover, and a touch screen keeps :hover after a tap */
+html .nav-dropdown.dismissed .nav-dropdown-content,html .global-nav.dismissed .global-nav-dropdown{display:none!important}
 @media (max-width:640px){
   .global-nav{position:static}
   .global-nav-dropdown{left:12px!important;right:12px;min-width:0!important;max-height:calc(100vh - 80px);overflow-y:auto}
@@ -757,21 +760,28 @@ a.brand{color:inherit;text-decoration:none}
   'use strict';
   var menus=[].slice.call(document.querySelectorAll('.nav-dropdown,.global-nav'));
   var closing=false;
-  function setOpen(m,open){m.classList.toggle('open',open);var b=m.querySelector('button');if(b)b.setAttribute('aria-expanded',open?'true':'false');}
+  function setOpen(m,open){m.classList.toggle('open',open);if(open)m.classList.remove('dismissed');var b=m.querySelector('button');if(b)b.setAttribute('aria-expanded',open?'true':'false');}
+  // closed on purpose (Escape, a click on the button): stays closed while the pointer is still over the menu, because the pages also open it on :hover
+  function dismiss(m){setOpen(m,false);if(m.matches(':hover'))m.classList.add('dismissed');}
+  function shown(m){var p=m.querySelector('.nav-dropdown-content,.global-nav-dropdown');return m.classList.contains('open')||(!!p&&getComputedStyle(p).display!=='none');}
   menus.forEach(function(m){
     var b=m.querySelector('button');if(!b)return;
     b.setAttribute('aria-haspopup','true');b.setAttribute('aria-expanded','false');
-    b.addEventListener('click',function(e){e.stopPropagation();setOpen(m,!m.classList.contains('open'));});
+    b.addEventListener('click',function(e){e.stopPropagation();if(m.classList.contains('open'))dismiss(m);else setOpen(m,true);});
+    m.addEventListener('mouseleave',function(){m.classList.remove('dismissed');});
   });
   menus.forEach(function(m){
     m.addEventListener('focusin',function(e){if(closing)return;if(e.target.matches&&e.target.matches(':focus-visible'))setOpen(m,true);});
     m.addEventListener('focusout',function(e){if(!e.relatedTarget||!m.contains(e.relatedTarget))setOpen(m,false);});
   });
-  document.addEventListener('click',function(e){menus.forEach(function(m){if(!m.contains(e.target))setOpen(m,false);});});
+  document.addEventListener('click',function(e){menus.forEach(function(m){if(!m.contains(e.target)){setOpen(m,false);m.classList.remove('dismissed');}});});
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape')return;
-    menus.forEach(function(m){if(!m.classList.contains('open'))return;
-      closing=true;setOpen(m,false);var b=m.querySelector('button');if(b)b.focus();closing=false;
+    menus.forEach(function(m){if(!shown(m))return;
+      var inside=m.contains(document.activeElement);
+      closing=true;dismiss(m);
+      if(inside){var b=m.querySelector('button');if(b)b.focus();}
+      closing=false;
     });
   });
   var tt=document.getElementById('themeToggle');
