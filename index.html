@@ -440,6 +440,10 @@ a.brand{color:inherit;text-decoration:none}
 /* a menu the visitor closed on purpose (Escape, or a click on its button) stays closed while the pointer is still over it:
    the pages also open their menus on :hover, and a touch screen keeps :hover after a tap */
 html .nav-dropdown.dismissed .nav-dropdown-content,html .global-nav.dismissed .global-nav-dropdown{display:none!important}
+/* the skip link focuses <main>; the container itself needs no ring */
+main[tabindex="-1"]:focus{outline:none}
+/* text for screen readers only (copy confirmation) */
+.shell-live{position:fixed;left:0;top:0;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 @media (max-width:640px){
   .global-nav{position:static}
   .global-nav-dropdown{left:12px!important;right:12px;min-width:0!important;max-height:calc(100vh - 80px);overflow-y:auto}
@@ -454,7 +458,7 @@ html .nav-dropdown.dismissed .nav-dropdown-content,html .global-nav.dismissed .g
 
   <!-- Top Navigation -->
   <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite" style="position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(1rem);background:var(--surface);border:1px solid var(--accent);color:var(--text);padding:0.65rem 1.4rem;border-radius:9999px;font-size:0.85rem;opacity:0;transition:all 0.3s ease;pointer-events:none;z-index:9999;">✅ BibTeX 복사 완료!</div>
+  <div class="toast" id="toast" style="position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(1rem);background:var(--surface);border:1px solid var(--accent);color:var(--text);padding:0.65rem 1.4rem;border-radius:9999px;font-size:0.85rem;opacity:0;transition:all 0.3s ease;pointer-events:none;z-index:9999;">✅ BibTeX 복사 완료!</div>
 
   <header class="site-header">
     <div class="container nav-inner">
@@ -492,7 +496,7 @@ html .nav-dropdown.dismissed .nav-dropdown-content,html .global-nav.dismissed .g
     </div>
   </header>
 
-  <main class="container" id="main">
+  <main class="container" id="main" tabindex="-1">
 
     <!-- Hero -->
     <section class="hero">
@@ -760,21 +764,25 @@ html .nav-dropdown.dismissed .nav-dropdown-content,html .global-nav.dismissed .g
   'use strict';
   var menus=[].slice.call(document.querySelectorAll('.nav-dropdown,.global-nav'));
   var closing=false;
-  function setOpen(m,open){m.classList.toggle('open',open);if(open)m.classList.remove('dismissed');var b=m.querySelector('button');if(b)b.setAttribute('aria-expanded',open?'true':'false');}
-  // closed on purpose (Escape, a click on the button): stays closed while the pointer is still over the menu, because the pages also open it on :hover
-  function dismiss(m){setOpen(m,false);if(m.matches(':hover'))m.classList.add('dismissed');}
   function shown(m){var p=m.querySelector('.nav-dropdown-content,.global-nav-dropdown');return m.classList.contains('open')||(!!p&&getComputedStyle(p).display!=='none');}
+  // aria-expanded follows what the visitor sees, however the menu was opened (hover, click, keyboard)
+  function sync(m){var b=m.querySelector('button');if(b)b.setAttribute('aria-expanded',shown(m)?'true':'false');}
+  function setOpen(m,open){m.classList.toggle('open',open);if(open)m.classList.remove('dismissed');sync(m);}
+  // closed on purpose (Escape, a click on the button): stays closed while the pointer is still over the menu, because the pages also open it on :hover
+  function dismiss(m){m.classList.remove('open');if(m.matches(':hover'))m.classList.add('dismissed');sync(m);}
+  function later(m){requestAnimationFrame(function(){sync(m);});}
   menus.forEach(function(m){
     var b=m.querySelector('button');if(!b)return;
-    b.setAttribute('aria-haspopup','true');b.setAttribute('aria-expanded','false');
+    b.setAttribute('aria-haspopup','true');sync(m);
     b.addEventListener('click',function(e){e.stopPropagation();if(m.classList.contains('open'))dismiss(m);else setOpen(m,true);});
-    m.addEventListener('mouseleave',function(){m.classList.remove('dismissed');});
+    m.addEventListener('mouseenter',function(){later(m);});
+    m.addEventListener('mouseleave',function(){m.classList.remove('dismissed');later(m);});
   });
   menus.forEach(function(m){
     m.addEventListener('focusin',function(e){if(closing)return;if(e.target.matches&&e.target.matches(':focus-visible'))setOpen(m,true);});
     m.addEventListener('focusout',function(e){if(!e.relatedTarget||!m.contains(e.relatedTarget))setOpen(m,false);});
   });
-  document.addEventListener('click',function(e){menus.forEach(function(m){if(!m.contains(e.target)){setOpen(m,false);m.classList.remove('dismissed');}});});
+  document.addEventListener('click',function(e){menus.forEach(function(m){if(!m.contains(e.target)){m.classList.remove('open','dismissed');sync(m);}});});
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape')return;
     menus.forEach(function(m){if(!shown(m))return;
@@ -786,6 +794,24 @@ html .nav-dropdown.dismissed .nav-dropdown-content,html .global-nav.dismissed .g
   });
   var tt=document.getElementById('themeToggle');
   if(tt)tt.addEventListener('click',function(){try{localStorage.setItem('sr_theme',document.documentElement.getAttribute('data-theme'));}catch(e){}});
+  // the copy confirmation ("toast") is only a picture for screen readers: its text is announced through a quiet live region that stays empty until a copy succeeds
+  (function(){
+    var t=document.getElementById('toast');if(!t)return;
+    var live=document.createElement('div');live.className='shell-live';live.setAttribute('role','status');live.setAttribute('aria-live','polite');
+    document.body.appendChild(live);
+    t.setAttribute('aria-hidden','true');
+    var was=false;
+    function on(){return t.classList.contains('show')||t.style.opacity==='1';}
+    new MutationObserver(function(){
+      var v=on();
+      if(v&&!was){
+        var msg=t.textContent.replace(/^[^A-Za-z0-9ㄱ-ㆎ가-힣]+/,'').replace(/\s+/g,' ').trim();
+        live.textContent='';
+        setTimeout(function(){live.textContent=msg;},60);
+      }
+      was=v;
+    }).observe(t,{attributes:true,attributeFilter:['class','style']});
+  })();
   function scrollers(){
     [].forEach.call(document.querySelectorAll('main *'),function(el){
       if(el.hasAttribute('tabindex'))return;
