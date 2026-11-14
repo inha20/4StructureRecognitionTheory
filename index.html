@@ -450,7 +450,7 @@ main[tabindex="-1"]:focus{outline:none}
   .global-nav{position:static!important}
   .global-nav-dropdown{left:12px!important;right:12px;min-width:0!important;max-height:calc(100vh - 80px);overflow-y:auto}
 }
-/*end-shell*/@media (hover:hover){.global-nav:hover .global-nav-dropdown{display:block!important}}.link-card{min-width:0}.link-title{overflow-wrap:anywhere}.table-card{overflow-x:auto;position:relative}html[data-theme="dark"]{--on-accent:#0d0f17}</style>
+/*end-shell*/@media (hover:hover){.global-nav:hover .global-nav-dropdown{display:block!important}}.link-card{min-width:0}.link-title{overflow-wrap:anywhere}.table-card{overflow-x:auto;position:relative}html[data-theme="dark"]{--on-accent:#0d0f17}html[data-theme="dark"] .brand-mark{background:linear-gradient(135deg,var(--accent),var(--violet))}</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -770,8 +770,8 @@ main[tabindex="-1"]:focus{outline:none}
   // aria-expanded follows what the visitor sees, however the menu was opened (hover, click, keyboard)
   function sync(m){var b=m.querySelector('button');if(b)b.setAttribute('aria-expanded',shown(m)?'true':'false');}
   function setOpen(m,open){m.classList.toggle('open',open);if(open)m.classList.remove('dismissed');sync(m);}
-  // closed on purpose (Escape, a click on the button): stays closed while the pointer is still over the menu, because the pages also open it on :hover
-  function dismiss(m){m.classList.remove('open');if(m.matches(':hover'))m.classList.add('dismissed');sync(m);}
+  // closed on purpose (Escape, a click on the button, a click or key press outside): stays closed while the pointer is still over the menu, because the pages also open it on :hover
+  function dismiss(m){m.classList.remove('open');m.classList.toggle('dismissed',m.matches(':hover'));sync(m);}
   function later(m){requestAnimationFrame(function(){sync(m);});}
   menus.forEach(function(m){
     var b=m.querySelector('button');if(!b)return;
@@ -792,7 +792,8 @@ main[tabindex="-1"]:focus{outline:none}
     // keyboard focus leaving the menu closes it also when the pointer still rests on it (then the pointer must not hold it open: dismiss, not just drop .open)
     m.addEventListener('focusout',function(e){if(!e.relatedTarget||!m.contains(e.relatedTarget))dismiss(m);});
   });
-  document.addEventListener('click',function(e){menus.forEach(function(m){if(!m.contains(e.target)){m.classList.remove('open','dismissed');sync(m);}});});
+  // an activation outside closes the menus; a keyboard or screen-reader activation can happen while the pointer still rests on a menu, which must then stay closed too (dismiss, not a plain drop of the marker)
+  document.addEventListener('click',function(e){menus.forEach(function(m){if(!m.contains(e.target))dismiss(m);});});
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape')return;
     menus.forEach(function(m){if(!shown(m))return;
@@ -819,14 +820,17 @@ main[tabindex="-1"]:focus{outline:none}
   (function(){
     var t=document.getElementById('toast');if(!t)return;
     var live=document.createElement('div');live.className='shell-live';live.setAttribute('role','status');live.setAttribute('aria-live','polite');
+    // each announcement is a new child, and only additions are read: two copies right after one another stay two announcements
+    // (re-setting one text node would collapse them into one, because the text would not have changed)
+    live.setAttribute('aria-atomic','false');live.setAttribute('aria-relevant','additions');
     document.body.appendChild(live);
     t.setAttribute('aria-hidden','true');
     var cb=navigator.clipboard;if(!cb||typeof cb.writeText!=='function')return;
     var write=cb.writeText;
     function say(){
       var msg=t.textContent.replace(/^[^A-Za-z0-9ㄱ-ㆎ가-힣]+/,'').replace(/\s+/g,' ').trim();
-      live.textContent='';
-      setTimeout(function(){live.textContent=msg;},60);
+      var n=document.createElement('div');n.textContent=msg;live.appendChild(n);
+      setTimeout(function(){if(n.parentNode===live)live.removeChild(n);},6000);
     }
     cb.writeText=function(){
       var p=write.apply(cb,arguments);
