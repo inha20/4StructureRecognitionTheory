@@ -789,7 +789,8 @@ main[tabindex="-1"]:focus{outline:none}
   });
   menus.forEach(function(m){
     m.addEventListener('focusin',function(e){if(closing)return;if(e.target.matches&&e.target.matches(':focus-visible'))setOpen(m,true);});
-    m.addEventListener('focusout',function(e){if(!e.relatedTarget||!m.contains(e.relatedTarget))setOpen(m,false);});
+    // keyboard focus leaving the menu closes it also when the pointer still rests on it (then the pointer must not hold it open: dismiss, not just drop .open)
+    m.addEventListener('focusout',function(e){if(!e.relatedTarget||!m.contains(e.relatedTarget))dismiss(m);});
   });
   document.addEventListener('click',function(e){menus.forEach(function(m){if(!m.contains(e.target)){m.classList.remove('open','dismissed');sync(m);}});});
   document.addEventListener('keydown',function(e){
@@ -803,23 +804,35 @@ main[tabindex="-1"]:focus{outline:none}
   });
   var tt=document.getElementById('themeToggle');
   if(tt)tt.addEventListener('click',function(){try{localStorage.setItem('sr_theme',document.documentElement.getAttribute('data-theme'));}catch(e){}});
-  // the copy confirmation ("toast") is only a picture for screen readers: its text is announced through a quiet live region that stays empty until a copy succeeds
+  // the browser's own colours (address bar, status bar) follow the page theme, not only the operating-system setting: the two <meta name="theme-color"> tags are matched by prefers-color-scheme, so they get the colour of the theme that is showing
+  (function(){
+    var col={dark:'#0d0f17',light:'#fbfbf9'},root=document.documentElement;
+    function chrome(){
+      var c=col[root.getAttribute('data-theme')];if(!c)return;
+      [].forEach.call(document.querySelectorAll('meta[name="theme-color"]'),function(m){if(m.getAttribute('content')!==c)m.setAttribute('content',c);});
+    }
+    chrome();
+    new MutationObserver(chrome).observe(root,{attributes:true,attributeFilter:['data-theme']});
+  })();
+  // the copy confirmation ("toast") is only a picture for screen readers: its text is announced through a quiet live region that stays empty until a copy succeeds;
+  // every successful copy announces it again, also while the toast from the previous copy is still showing (no class or style change then, so the toast itself cannot be watched)
   (function(){
     var t=document.getElementById('toast');if(!t)return;
     var live=document.createElement('div');live.className='shell-live';live.setAttribute('role','status');live.setAttribute('aria-live','polite');
     document.body.appendChild(live);
     t.setAttribute('aria-hidden','true');
-    var was=false;
-    function on(){return t.classList.contains('show')||t.style.opacity==='1';}
-    new MutationObserver(function(){
-      var v=on();
-      if(v&&!was){
-        var msg=t.textContent.replace(/^[^A-Za-z0-9ㄱ-ㆎ가-힣]+/,'').replace(/\s+/g,' ').trim();
-        live.textContent='';
-        setTimeout(function(){live.textContent=msg;},60);
-      }
-      was=v;
-    }).observe(t,{attributes:true,attributeFilter:['class','style']});
+    var cb=navigator.clipboard;if(!cb||typeof cb.writeText!=='function')return;
+    var write=cb.writeText;
+    function say(){
+      var msg=t.textContent.replace(/^[^A-Za-z0-9ㄱ-ㆎ가-힣]+/,'').replace(/\s+/g,' ').trim();
+      live.textContent='';
+      setTimeout(function(){live.textContent=msg;},60);
+    }
+    cb.writeText=function(){
+      var p=write.apply(cb,arguments);
+      if(p&&typeof p.then==='function')p.then(say,function(){});
+      return p;
+    };
   })();
   function scrollers(){
     [].forEach.call(document.querySelectorAll('main *'),function(el){
