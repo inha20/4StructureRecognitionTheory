@@ -446,6 +446,11 @@ html .nav-dropdown.dismissed .nav-dropdown-content,html .global-nav.dismissed .g
 main[tabindex="-1"]:focus{outline:none}
 /* text for screen readers only (copy confirmation) */
 .shell-live{position:fixed;left:0;top:0;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+/* the dialog for a refused clipboard write (the script creates it when it is first needed); the pages share one palette, so their own colour variables are enough */
+.shell-copyfail{margin:auto;max-width:min(26rem,calc(100vw - 2rem));padding:1.25rem 1.5rem;background:var(--surface);color:var(--text);border:1px solid var(--accent);border-radius:var(--radius-md);box-shadow:var(--shadow-md)}
+.shell-copyfail::backdrop{background:rgba(0,0,0,.55)}
+.shell-copyfail p{margin:0 0 1rem;color:var(--text);font-size:.95rem;line-height:1.6}
+.shell-copyfail button{font:inherit;font-weight:600;cursor:pointer;padding:.5rem 1.2rem;border:0;border-radius:6px;background:var(--accent);color:var(--bg)}
 @media (max-width:640px){
   .global-nav{position:static!important}
   .global-nav-dropdown{left:12px!important;right:12px;min-width:0!important;max-height:calc(100vh - 80px);overflow-y:auto}
@@ -835,6 +840,32 @@ main[tabindex="-1"]:focus{outline:none}
     cb.writeText=function(){
       var p=write.apply(cb,arguments);
       if(p&&typeof p.then==='function')p.then(say,function(){});
+      return p;
+    };
+  })();
+  // a refused clipboard write (no permission, or a browser that blocks it) is said so in a small dialog; without it the copy button just seems to do nothing.
+  // The promise goes on unchanged, so a page's own .then / .catch still sees the result; the text follows the page language (<html lang>).
+  // A page without navigator.clipboard (an old browser, an insecure address) is left alone: its own code fails before this script can see it.
+  (function(){
+    var cb=navigator.clipboard;if(!cb||typeof cb.writeText!=='function')return;
+    var write=cb.writeText,dlg=null;
+    var ko=/^ko/i.test(document.documentElement.lang||'');
+    var msg=ko?'브라우저가 클립보드 쓰기를 거부한 것 같습니다.':'The browser seems to have refused the clipboard write.';
+    function show(){
+      if(typeof HTMLDialogElement!=='function'||typeof HTMLDialogElement.prototype.showModal!=='function'){alert(msg);return;}
+      if(!dlg){
+        dlg=document.createElement('dialog');dlg.className='shell-copyfail';
+        dlg.setAttribute('role','alertdialog');dlg.setAttribute('aria-labelledby','shell-copyfail-msg');
+        var f=document.createElement('form');f.method='dialog';
+        var p=document.createElement('p');p.id='shell-copyfail-msg';p.textContent=msg;
+        var b=document.createElement('button');b.textContent=ko?'확인':'OK';
+        f.appendChild(p);f.appendChild(b);dlg.appendChild(f);document.body.appendChild(dlg);
+      }
+      if(!dlg.open)dlg.showModal();
+    }
+    cb.writeText=function(){
+      var p=write.apply(cb,arguments);
+      if(p&&typeof p.then==='function')p.then(null,function(){try{show();}catch(e){}});
       return p;
     };
   })();
